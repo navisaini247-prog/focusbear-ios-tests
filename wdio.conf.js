@@ -53,7 +53,7 @@ exports.config = {
     capabilities: [{
     platformName: 'iOS',
     'appium:automationName': 'XCUITest',
-    'appium:deviceName': 'iPhone 17',
+    'appium:deviceName': 'iPhone 14',
     'appium:browserName': 'Safari'
 }],
     //
