@@ -1,0 +1,64 @@
+name: Android build aab
+on:
+  workflow_dispatch: # To trigger manual build
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      SENTRY_URL: ${{ secrets.SENTRY_URL }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install npm dependencies
+        run: |
+          npm install --legacy-peer-deps
+        continue-on-error: true
+      - name: Install react-native-set-version
+        run: npm install -g react-native-set-version --legacy-peer-deps
+      - name: Get next version
+        uses: reecetech/version-increment@2023.4.1
+        id: next_version
+        with:
+          scheme: semver
+          increment: patch
+      - name: Set version
+        run: |
+          setVersion ${{ steps.next_version.outputs.version }}
+          echo "New version is: ${{ steps.next_version.outputs.version }}"
+        continue-on-error: true
+      - name: Create assets directory
+        run: |
+          mkdir -p android/app/src/main/assets
+          mkdir -p android/app/src/main/res_temp
+      - name: Bundle React Native code
+        run: |
+          npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res_temp
+      - name: Build Android Release
+        run: |
+          cd android && ./gradlew bundleRelease
+      - name: Sign App Bundle
+        id: sign_app
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: android/app/build/outputs/bundle/productionRelease
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release.aab
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - name: create release tag
+        uses: ncipollo/release-action@v1
+        with:
+          generateReleaseNotes: true
+          artifacts: " "
+          omitBody: true
+          tag: "${{ steps.next_version.outputs.version }}"

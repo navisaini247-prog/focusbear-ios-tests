@@ -1,0 +1,79 @@
+/*
+  Localizable.strings
+  FocusBear
+
+  Created by Arindam HestaBit on 28/04/23.
+*/
+
+"shield_subtitle" = "No puedes usar %@ porque lo bloqueaste usando Focus Bear";
+"shield_title" = "Restringido por Focus Bear";
+
+"blocked_apps" = "Aplicaciones bloqueadas";
+"blocked_categories" = "Categorías bloqueadas";
+"blocked_webdomains" = "Dominios web bloqueados";
+
+"apps_to_block" = "Aplicaciones para bloquear: ";
+
+"start" = "Iniciar";
+"pause" = "Pausar";
+"resume" = "Reanudar";
+"next" = "Siguiente";
+"skipped" = "Omitido";
+"finished" = "¡Finalizado!";
+"done" = "Hecho";
+"why_do_you_want_to_skip" = "¿Por qué quieres omitirlo?";
+"start_routine" = "Iniciar rutina";
+"routine_has_been_postponed_resume_routine" = "La rutina ha sido pospuesta\n ¿Reanudar rutina?";
+"i_already_did_it" = "Ya lo hice";
+"cant_do_it_today" = "No puedo hacerlo hoy";
+
+"continue_on_your_phone" = "Continúa en tu teléfono";
+"open_focusbear" = "Abrir Focus Bear";
+"tap_to_return_app" = "Toca para volver a la aplicación";
+"close" = "Cerrar";
+"whats_next" = "¿Qué sigue?";
+"its_time_to_focus" = "Es hora de concentrarse";
+"updated" = "Actualizado";
+"start_a_focus_session" = "Iniciar una sesión de enfoque";
+
+"blockedMessage1" = "Ups, ahora no";
+"blockedMessage2" = "¿Estás seguro de que necesitas esto?";
+"blockedMessage3" = "Mantén tu enfoque bloqueado";
+
+"motivationalMessage1" = "\"El éxito es la suma de pequeños esfuerzos repetidos día tras día.\" – Robert Collier";
+"motivationalMessage2" = "\"El secreto de salir adelante es comenzar.\" – Mark Twain";
+"motivationalMessage3" = "\"La disciplina es elegir entre lo que quieres ahora y lo que más deseas.\" – Abraham Lincoln";
+"motivationalMessage4" = "\"Tu futuro se crea con lo que haces hoy, no mañana.\" – Robert Kiyosaki";
+"motivationalMessage5" = "\"Siempre parece imposible hasta que se hace.\" – Nelson Mandela";
+
+"streak_title" = "Racha";
+"streak_widget_description" = "Seguimiento de rachas de mañana, noche y enfoque.";
+"streak_morning" = "Mañana";
+"streak_evening" = "Noche";
+"streak_focus" = "Enfoque";
+"streak_morning_short" = "M";
+"streak_evening_short" = "N";
+"streak_focus_short" = "E";
+"streak_days" = "días";
+
+"blocked_message_title" = "Mensaje de bloqueo";
+"blocked_message_widget_description" = "Muestra tu mensaje de bloqueo o una frase motivacional.";
+/* Soft blocking feature */
+"block_app" = "Bloquearlo";
+"unlock_for_mins_secs" = "Desbloquear por %d min %d s";
+"unlock_for_mins" = "Desbloquear por %d min";
+"unlock_for_secs" = "Desbloquear por %d s";
+"waiting_to_unlock" = "Esperando para desbloquear";
+"waiting" = "Esperando...";
+"waiting_countdown" = "Espera %d segundos...";
+"unlocking_title" = "Bear with us...";
+"unlock_delay_message" = "Por favor espera %d segundos antes de que la aplicación se desbloquee";
+"processing_unlock" = "Procesando desbloqueo...";
+"unlock_period_ending" = "Período de desbloqueo terminando";
+"blocking_will_resume" = "El bloqueo de la aplicación se reanudará pronto";
+
+"exponential_delay_note" = "Cada desbloqueo duplica el tiempo de espera. Mantente enfocado - esta pausa está aquí para ayudarte. ¡Puedes personalizar la espera base y la duración del desbloqueo en los ajustes del horario de bloqueo!";
+
+/* Blocking schedule shield reason */
+"blocking_enabled_by_schedule" = "Tu horario de bloqueo %@ está activo";
+"blocked_globally" = "Esta aplicación está bloqueada globalmente";

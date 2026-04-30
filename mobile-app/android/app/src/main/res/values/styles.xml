@@ -1,0 +1,21 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.EdgeToEdge.Material3.Dynamic">
+        <!-- Customize your theme here. -->
+        <item name="android:editTextBackground">@android:color/transparent</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:textColor">#e9902c</item>
+    </style>
+
+    <style name="BootTheme" parent="Theme.BootSplash.EdgeToEdge">
+        <item name="bootSplashBackground">@color/bootsplash_background</item>
+        <item name="bootSplashLogo">@drawable/bootsplash_logo</item>
+        <item name="postBootSplashTheme">@style/AppTheme</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@color/alert_background</item>
+        <item name="android:textColor">@color/alert_text</item>
+        <item name="android:textColorPrimary">@color/alert_text</item>
+    </style>
+</resources>

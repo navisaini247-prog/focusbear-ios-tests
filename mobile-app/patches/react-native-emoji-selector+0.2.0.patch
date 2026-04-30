@@ -1,0 +1,154 @@
+diff --git a/node_modules/react-native-emoji-selector/index.js b/node_modules/react-native-emoji-selector/index.js
+index 0737acd..27e3b0b 100644
+--- a/node_modules/react-native-emoji-selector/index.js
++++ b/node_modules/react-native-emoji-selector/index.js
+@@ -7,10 +7,11 @@
+   TextInput,
+   Platform,
+   ActivityIndicator,
+-  AsyncStorage,
++  ScrollView,
+   FlatList
+ } from "react-native";
+ import emoji from "emoji-datasource";
++import AsyncStorage from "@react-native-async-storage/async-storage";
+ 
+ export const Categories = {
+   all: {
+@@ -68,37 +69,43 @@
+ const sortEmoji = list => list.sort((a, b) => a.sort_order - b.sort_order);
+ const categoryKeys = Object.keys(Categories);
+ 
+-const TabBar = ({ theme, activeCategory, onPress, width }) => {
+-  const tabSize = width / categoryKeys.length;
++const TabBar = ({ theme, activeCategory, onPress, width, columns }) => {
++  const colSize = Math.floor(width / columns);
++  const tabFontSize = Math.max(colSize - 12, 16);
+ 
+-  return categoryKeys.map(c => {
+-    const category = Categories[c];
+-    if (c !== "all")
+-      return (
+-        <TouchableOpacity
+-          key={category.name}
+-          onPress={() => onPress(category)}
+-          style={{
+-            flex: 1,
+-            height: tabSize,
+-            borderColor: category === activeCategory ? theme : "#EEEEEE",
+-            borderBottomWidth: 2,
+-            alignItems: "center",
+-            justifyContent: "center"
+-          }}
+-        >
+-          <Text
+-            style={{
+-              textAlign: "center",
+-              paddingBottom: 8,
+-              fontSize: tabSize - 24
+-            }}
+-          >
+-            {category.symbol}
+-          </Text>
+-        </TouchableOpacity>
+-      );
+-  });
++  return (
++    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
++      {categoryKeys.map(c => {
++        const category = Categories[c];
++        if (c !== "all")
++          return (
++            <TouchableOpacity
++              key={category.name}
++              onPress={() => onPress(category)}
++              style={{
++                width: colSize,
++                height: colSize,
++                borderColor: category === activeCategory ? theme : "#EEEEEE",
++                borderBottomWidth: 2,
++                alignItems: "center",
++                justifyContent: "center"
++              }}
++            >
++              <Text
++                allowFontScaling={false}
++                style={{
++                  textAlign: "center",
++                  paddingBottom: 8,
++                  fontSize: tabFontSize
++                }}
++              >
++                {category.symbol}
++              </Text>
++            </TouchableOpacity>
++          );
++      })}
++    </ScrollView>
++  );
+ };
+ 
+ const EmojiCell = ({ emoji, colSize, ...other }) => (
+@@ -112,7 +119,7 @@
+     }}
+     {...other}
+   >
+-    <Text style={{ color: "#FFFFFF", fontSize: colSize - 12 }}>
++    <Text allowFontScaling={false} style={{ color: "#FFFFFF", fontSize: Math.max(colSize - 12, 16) }}>
+       {charFromEmojiObject(emoji)}
+     </Text>
+   </TouchableOpacity>
+@@ -290,14 +297,15 @@
+     const Searchbar = (
+       <View style={styles.searchbar_container}>
+         <TextInput
++          allowFontScaling={false}
+           style={styles.search}
+           placeholder={placeholder}
+           clearButtonMode="always"
+           returnKeyType="done"
+           autoCorrect={false}
+-          underlineColorAndroid={theme}
+           value={searchQuery}
+           onChangeText={this.handleSearch}
++          placeholderTextColor={'#D6D6D6'}
+         />
+       </View>
+     );
+@@ -313,6 +321,7 @@
+               onPress={this.handleTabSelect}
+               theme={theme}
+               width={this.state.width}
++              columns={columns}
+             />
+           )}
+         </View>
+@@ -322,7 +331,9 @@
+             <View style={{ flex: 1 }}>
+               <View style={styles.container}>
+                 {showSectionTitles && (
+-                  <Text style={styles.sectionHeader}>{title}</Text>
++                  <Text allowFontScaling={false} style={styles.sectionHeader}>
++                    {title}
++                  </Text>
+                 )}
+                 <FlatList
+                   style={styles.scrollview}
+@@ -381,9 +392,16 @@
+   searchbar_container: {
+     width: "100%",
+     zIndex: 1,
+-    backgroundColor: "rgba(255,255,255,0.75)"
+   },
+   search: {
++    backgroundColor: '#424242',
++    padding:0,
++    borderRadius:16,
++    fontSize:12,
++    borderWidth:0,
++    paddingVertical:6,
++    paddingHorizontal:8,
++    color:'#D6D6D6',
+     ...Platform.select({
+       ios: {
+         height: 36,

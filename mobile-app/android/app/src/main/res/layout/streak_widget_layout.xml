@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/streak_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background_dark"
+    android:elevation="4dp"
+    android:padding="0dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/streak_widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/widget_background_orange"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/focus_bear_icon"
+            android:contentDescription="@string/widget_focus_bear_logo"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/streak_widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/widget_streak_title"
+            android:textColor="@color/widget_header_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Streaks row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center">
+
+        <!-- Morning streak -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/streak_morning_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/widget_streak_inactive" />
+
+            <TextView
+                android:id="@+id/streak_morning_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_days"
+                android:textSize="11sp"
+                android:textColor="@color/widget_text_secondary" />
+
+            <TextView
+                android:id="@+id/streak_morning_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_morning"
+                android:textSize="12sp"
+                android:textColor="@color/widget_text"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/streak_divider_one"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            android:background="@color/widget_divider" />
+
+        <!-- Evening streak -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/streak_evening_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/widget_streak_inactive" />
+
+            <TextView
+                android:id="@+id/streak_evening_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_days"
+                android:textSize="11sp"
+                android:textColor="@color/widget_text_secondary" />
+
+            <TextView
+                android:id="@+id/streak_evening_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_evening"
+                android:textSize="12sp"
+                android:textColor="@color/widget_text"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/streak_divider_two"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            android:background="@color/widget_divider" />
+
+        <!-- Focus streak -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/streak_focus_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/widget_streak_inactive" />
+
+            <TextView
+                android:id="@+id/streak_focus_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_days"
+                android:textSize="11sp"
+                android:textColor="@color/widget_text_secondary" />
+
+            <TextView
+                android:id="@+id/streak_focus_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_streak_focus"
+                android:textSize="12sp"
+                android:textColor="@color/widget_text"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

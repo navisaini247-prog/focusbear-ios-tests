@@ -1,0 +1,78 @@
+// DISABLED native module for iOS Simulator (Appium testing safe fallback)
+
+const ControlFunction = {
+  selectApps: () => {},
+  selectAppsForSchedule: () => {},
+  commitSelectionForSchedule: async () => {},
+  storeCurrentSelection: () => {},
+  setBlockingSchedules: async () => {},
+  setHabitBlockingWindows: async () => {},
+  assignStoredSelectionToSchedule: async () => {},
+  setSelectionDataForSchedule: async () => {},
+  checkPermissionsFromReact: async () => false,
+  getScreenTimePermission: async () => 0,
+  revokeScreenTimePermission: async () => false,
+
+  startBlockingDistractingApps: () => {},
+  setCurrentUseGlobalBlockList: () => {},
+  stopBlockingDistractingApps: () => {},
+  pauseBlockingWithResume: () => {},
+  pauseSchedulesIndefinitely: () => {},
+  resumeScheduleBlocking: () => {},
+  clearBlockList: () => {},
+  shouldViewDisable: async () => false,
+  startBlockingSchedule: async () => {},
+
+  getBlockingSchedules: async () => [],
+  getScheduleBlockingStatus: async () => ({
+    isScheduleBlocking: false,
+    activeScheduleIds: [],
+    activeScheduleNames: [],
+    activeScheduleCount: 0,
+    hasGlobalSelection: false,
+    isPaused: false,
+    pauseState: "",
+    pauseUntil: null,
+    totalApplications: 0,
+    temporaryUnlockEndTime: null,
+  }),
+
+  loadSelectionForSchedule: async () => ({
+    hasSelection: false,
+    applicationsCount: 0,
+    categoriesCount: 0,
+    webDomainsCount: 0,
+  }),
+
+  removeBlockingSchedule: async () => {},
+  clearAllBlockingSchedules: async () => {},
+
+  selectAppsForGlobalHabitBlocking: () => {},
+  commitGlobalHabitBlockingSelection: async () => {},
+  getGlobalHabitBlockingEnabled: async () => false,
+  setGlobalHabitBlockingEnabled: () => {},
+  getGlobalHabitBlockingSelection: async () => ({
+    hasSelection: false,
+    applicationsCount: 0,
+    categoriesCount: 0,
+    webDomainsCount: 0,
+  }),
+
+  getBlockedAppsCount: async () => ({
+    blockedApplicationsCount: 0,
+    blockedApplicationCategoriesCount: 0,
+  }),
+
+  setBlockingReason: () => {},
+  setBlockingStatus: () => {},
+  setNextActivityInfo: () => {},
+  setHighFrictionMode: () => {},
+  setSuperStrictMode: () => {},
+  saveCustomBlockedMessage: () => {},
+  setStreakData: () => {},
+  saveBaseDelay: () => {},
+
+  reloadWidget: () => {},
+};
+
+export default ControlFunction;

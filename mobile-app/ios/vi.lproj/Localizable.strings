@@ -1,0 +1,58 @@
+"shield_subtitle" = "Bạn không thể sử dụng %@ vì bạn đã chặn nó bằng Focus Bear";
+"shield_title" = "Bị hạn chế bởi Focus Bear";
+
+"blocked_apps" = "Ứng dụng bị chặn";
+"blocked_categories" = "Danh mục bị chặn";
+"blocked_webdomains" = "Tên miền web bị chặn";
+
+"apps_to_block" = "Ứng dụng để chặn: ";
+"start" = "Bắt đầu";
+"pause" = "Tạm dừng";
+"resume" = "Tiếp tục";
+"next" = "Tiếp theo";
+"skipped" = "Bỏ qua";
+"finished" = "Hoàn thành!";
+"done" = "Xong";
+"why_do_you_want_to_skip" = "Tại sao bạn muốn bỏ qua?";
+"start_routine" = "Bắt đầu thói quen";
+"routine_has_been_postponed_resume_routine" = "Thói quen đã bị hoãn\n Tiếp tục thói quen?";
+"i_already_did_it" = "Tôi đã làm rồi";
+"cant_do_it_today" = "Hôm nay không thể làm";
+"continue_on_your_phone" = "Tiếp tục trên điện thoại của bạn";
+"open_focusbear" = "Mở Focus Bear";
+"tap_to_return_app" = "Nhấn để quay lại ứng dụng";
+"close" = "Đóng";
+"whats_next" = "Tiếp theo là gì:";
+"its_time_to_focus" = "Đã đến lúc tập trung";
+"updated"= "Đã cập nhật";
+"start_a_focus_session" = "Bắt đầu phiên tập trung";
+
+"blockedMessage1" = "Ối, không phải bây giờ";
+"blockedMessage2" = "Bạn có chắc cần cái này không?";
+"blockedMessage3" = "Giữ sự tập trung của bạn bị khóa";
+
+"motivationalMessage1" = "\"Thành công là tổng của những nỗ lực nhỏ, lặp lại ngày qua ngày.\" – Robert Collier";
+"motivationalMessage2" = "\"Bí mật để tiến lên là bắt đầu.\" – Mark Twain";
+"motivationalMessage3" = "\"Kỷ luật là chọn giữa những gì bạn muốn bây giờ và những gì bạn muốn nhất.\" – Abraham Lincoln";
+"motivationalMessage4" = "\"Tương lai của bạn được tạo ra bởi những gì bạn làm hôm nay, không phải ngày mai.\" – Robert Kiyosaki";
+"motivationalMessage5" = "\"Nó luôn dường như không thể cho đến khi nó được thực hiện.\" – Nelson Mandela";
+
+/* Soft blocking feature */
+"block_app" = "Chặn nó lại";
+"unlock_for_mins_secs" = "Mở khóa trong %d phút %d giây";
+"unlock_for_mins" = "Mở khóa trong %d phút";
+"unlock_for_secs" = "Mở khóa trong %d giây";
+"waiting_to_unlock" = "Đang chờ mở khóa";
+"waiting" = "Đang chờ...";
+"waiting_countdown" = "Chờ %d giây..."; 
+"unlocking_title" = "Hãy kiên nhẫn với chúng tôi...";
+"unlock_delay_message" = "Vui lòng chờ %d giây trước khi ứng dụng mở khóa";
+"processing_unlock" = "Đang xử lý mở khóa...";
+"unlock_period_ending" = "Thời gian mở khóa kết thúc";
+"blocking_will_resume" = "Chặn ứng dụng sẽ sớm tiếp tục";
+
+"exponential_delay_note" = "Mỗi lần mở khóa, thời gian chờ tăng gấp đôi. Hãy duy trì tập trung - khoảng dừng này ở đây để giúp bạn. Bạn có thể tùy chỉnh thời gian chờ cơ bản và thời lượng mở khóa trong cài đặt Lịch chặn!";
+
+/* Blocking schedule shield reason */
+"blocking_enabled_by_schedule" = "Lịch chặn %@ của bạn đang hoạt động";
+"blocked_globally" = "Ứng dụng này bị chặn toàn cầu";

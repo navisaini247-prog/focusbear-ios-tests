@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-auth0/src/networking/index.js b/node_modules/react-native-auth0/src/networking/index.js
+index 5447870..188e79b 100644
+--- a/node_modules/react-native-auth0/src/networking/index.js
++++ b/node_modules/react-native-auth0/src/networking/index.js
+@@ -5,7 +5,7 @@ import {fetchWithTimeout} from '../utils/fetchWithTimeout';
+ 
+ export default class Client {
+   constructor(options) {
+-    const {baseUrl, telemetry = {}, token, timeout = 10000} = options;
++    const {baseUrl, telemetry = {}, token, timeout = 20000} = options;
+     if (!baseUrl) {
+       throw new Error('Missing Auth0 domain');
+     }

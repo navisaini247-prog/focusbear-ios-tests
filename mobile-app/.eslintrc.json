@@ -1,0 +1,80 @@
+{
+  "env": {
+    "browser": true,
+    "react-native/react-native": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "@react-native",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"]
+    }
+  ],
+  "plugins": ["react", "react-native", "react-hooks", "jsx-a11y", "unused-imports", "prettier", "focusbear-testing", "i18next"],
+  "rules": {
+    "quotes": "off", // Disable the single/double quote rule
+    "react-native/no-unused-styles": 2, // Detect StyleSheet rules which are not used in your React components
+    "react-native/split-platform-components": 2, // Enforce using platform specific filenames when necessary
+    "react-native/no-inline-styles": 2, //  Detect JSX components with inline styles that contain literal values
+    "react-native/no-color-literals": 2, // Detect StyleSheet rules and inline styles containing color literals instead of variables
+    // "react-native/no-raw-text": 2, // Detect raw text outside of Text component // Disabled because it has issues
+    "react-native/no-single-element-style-arrays": 2, // No style arrays that have 1 element only <View style={[{height: 10}]}/>
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "warn",
+    "eol-last": "error",
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "no-async-promise-executor": "error",
+    "jsx-a11y/no-autofocus": "off",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "focusbear-testing/require-test-id": [
+      "error",
+      {
+        "componentAllowlist": [
+          "Pressable",
+          "TouchableOpacity",
+          "PressableWithFeedback",
+          "Button",
+          "TextInput"
+        ],
+        "interactivePropAllowlist": [],
+        "allowDataTestSkip": true
+      }
+    ],
+    "i18next/no-literal-string": "warn"
+  }
+}

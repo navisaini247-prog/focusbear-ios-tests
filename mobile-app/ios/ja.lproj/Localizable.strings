@@ -1,0 +1,58 @@
+"shield_subtitle" = "Focus Bear でブロックしたため、%@ を使用できません";
+"shield_title" = "Focus Bear によって制限されています";
+
+"blocked_apps" = "ブロックされたアプリ";
+"blocked_categories" = "ブロックされたカテゴリ";
+"blocked_webdomains" = "ブロックされたウェブドメイン";
+
+"apps_to_block" = "ブロックするアプリ: ";
+"start" = "開始";
+"pause" = "一時停止";
+"resume" = "再開";
+"next" = "次へ";
+"skipped" = "スキップ";
+"finished" = "完了!";
+"done" = "完了";
+"why_do_you_want_to_skip" = "なぜスキップしたいですか?";
+"start_routine" = "ルーチンを開始";
+"routine_has_been_postponed_resume_routine" = "ルーチンが延期されました\n ルーチンを再開しますか?";
+"i_already_did_it" = "すでにやりました";
+"cant_do_it_today" = "今日はできません";
+"continue_on_your_phone" = "電話で続行";
+"open_focusbear" = "Focus Bear を開く";
+"tap_to_return_app" = "タップしてアプリに戻る";
+"close" = "閉じる";
+"whats_next" = "次は何:";
+"its_time_to_focus" = "集中する時間です";
+"updated"= "更新済み";
+"start_a_focus_session" = "集中セッションを開始";
+
+"blockedMessage1" = "おっと、今はダメ";
+"blockedMessage2" = "本当にこれが必要ですか?";
+"blockedMessage3" = "集中をロックし続けて";
+
+"motivationalMessage1" = "\"成功は、小さな努力の積み重ねで、日々繰り返される。\" – Robert Collier";
+"motivationalMessage2" = "\"先を行く秘訣は、始めることだ。\" – Mark Twain";
+"motivationalMessage3" = "\"規律とは、今欲しいものと最も欲しいものの間で選ぶことだ。\" – Abraham Lincoln";
+"motivationalMessage4" = "\"あなたの未来は、今日あなたがすることによって作られる、明日ではない。\" – Robert Kiyosaki";
+"motivationalMessage5" = "\"それはいつも不可能に見える、までそれが完了するまで。\" – Nelson Mandela";
+
+/* Soft blocking feature */
+"block_app" = "ブロックする";
+"unlock_for_mins_secs" = "%d分%d秒間ロック解除";
+"unlock_for_mins" = "%d分間ロック解除";
+"unlock_for_secs" = "%d秒間ロック解除";
+"waiting_to_unlock" = "ロック解除を待っています";
+"waiting" = "待っています...";
+"waiting_countdown" = "%d 秒待ってください..."; 
+"unlocking_title" = "我慢してください...";
+"unlock_delay_message" = "アプリがロック解除されるまで %d 秒待ってください";
+"processing_unlock" = "ロック解除を処理中...";
+"unlock_period_ending" = "ロック解除期間終了";
+"blocking_will_resume" = "アプリのブロックがすぐに再開されます";
+
+"exponential_delay_note" = "解除するたびに待機時間が2倍になります。集中を続けてください — この一時停止はあなたのためにあります。基本待機時間と解除時間はブロックスケジュール設定でカスタマイズできます！";
+
+/* Blocking schedule shield reason */
+"blocking_enabled_by_schedule" = "ブロックスケジュール %@ が有効です";
+"blocked_globally" = "このアプリはグローバルでブロックされています";

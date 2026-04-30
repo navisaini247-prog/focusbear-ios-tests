@@ -1,0 +1,30 @@
+<resources>
+    <color name="bootsplash_background">#FFFFFF</color>
+    <color name="alert_background">#ffffff</color>
+    <color name="alert_text">#000000</color>
+
+    <color name="alert_background_center">#FCF8F0</color>
+    <color name="alert_background_center_border">#ffffff</color>
+    <color name="alert_title_text">#FFFFFF</color>
+    <color name="blocked_text">#515151</color>
+
+    <color name="floating_view_background">#FCF8F0</color>
+    <color name="floating_view_text">#000000</color>
+
+    <!-- Widget preview colors (light) -->
+    <color name="widget_bg">#FFFFFF</color>
+    <color name="widget_header_bg">#D97706</color>
+    <color name="widget_card_bg">#FFFFFF</color>
+    <color name="widget_divider">#E5E7EB</color>
+    <color name="widget_text">#000000</color>
+    <color name="widget_header_text">#FFFFFF</color>
+    <color name="widget_text_secondary">#6B7280</color>
+    <color name="widget_streak_active">#16A34A</color>
+    <color name="widget_streak_risk">#EAB308</color>
+    <color name="widget_streak_inactive">#9CA3AF</color>
+
+    <!-- Shape drawables for home-screen widgets: keep only in values/ (not values-night) so @color resolves the same for every device UI mode. Java picks light vs dark drawable from THEME_MODE. -->
+    <color name="widget_drawable_root_light">#FFFFFF</color>
+    <color name="widget_drawable_root_dark">#18181b</color>
+    <color name="widget_drawable_header_bg">#D97706</color>
+</resources>

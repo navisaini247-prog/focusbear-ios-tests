@@ -1,0 +1,1015 @@
+//
+//  ControlFunction.swift
+//  FocusBear
+//
+//  Created by Arindam HestaBit on 03/04/23.
+//
+
+import Combine
+import DeviceActivity
+import FamilyControls
+import Foundation
+import ManagedSettings
+import React
+import WidgetKit
+
+public typealias RCTResponseSenderBlock = @convention(block) ([Any]?) -> Void
+public typealias RCTPromiseResolveBlock = @convention(block) (Any?) -> Void
+public typealias RCTPromiseRejectBlock = @convention(block) (String?, String?, Error?) -> Void
+
+@objc(ControlFunction)
+class ControlFunction: NSObject {
+
+    @objc var bridge: RCTBridge!
+
+    private let globalSelectionEvent = "onGlobalSelectionChanged"
+    private let scheduleSelectionEvent = "onScheduleSelectionChanged"
+    private let blockingStatusEvent = "onBlockingStatusChanged"
+
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleBlockingStatusChanged(_:)),
+            name: .blockingScheduleStatusDidChange,
+            object: nil
+        )
+        registerDarwinObserver(for: "com.FocusBear.softUnlockDidStart")
+        registerDarwinObserver(for: "com.FocusBear.softUnlockDidEnd")
+    }
+
+    /// Registers a Darwin notification observer for the given notification name.
+    /// Darwin notifications cross process boundaries, allowing the extension to notify the main app about the start/end.
+    private func registerDarwinObserver(for name: String) {
+        CFNotificationCenterAddObserver(
+            CFNotificationCenterGetDarwinNotifyCenter(),
+            Unmanaged.passUnretained(self).toOpaque(),
+            { _, observer, _, _, _ in
+                guard let observer else { return }
+                Unmanaged<ControlFunction>.fromOpaque(observer).takeUnretainedValue()
+                    .onSoftUnlockStateChanged()
+            },
+            name as CFString,
+            nil,
+            .deliverImmediately
+        )
+    }
+
+    @objc private func onSoftUnlockStateChanged() {
+        BlockingScheduleManager.shared.notifyBlockingStatusChanged()
+    }
+
+    private func activityController() -> ActivityController {
+        if globalActivityController == nil {
+            globalActivityController = ActivityController.shared
+        }
+        return globalActivityController!
+    }
+
+    private var controlModel: ControlModel {
+        ControlModel.shared
+    }
+
+    private func presentPicker(_ controller: ActivityController) {
+        if controller.isPresented {
+            controller.isPresented = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                controller.isPresented = true
+            }
+        } else {
+            controller.isPresented = true
+        }
+    }
+
+    private func emitEvent(_ name: String, body: [String: Any]) {
+        bridge?.enqueueJSCall("RCTDeviceEventEmitter.emit", args: [name, body])
+    }
+
+    private struct HabitWindowPayload: Codable {
+        var id: String
+        var name: String
+        var startHour: Int
+        var startMinute: Int
+        var endHour: Int
+        var endMinute: Int
+        var daysOfWeek: [String]?
+        var blockingMode: String?
+
+        func toDefinition() -> BlockingScheduleManager.HabitWindowDefinition {
+            BlockingScheduleManager.HabitWindowDefinition(
+                id: id,
+                name: name,
+                interval: BlockingSchedule.Interval(
+                    startHour: startHour,
+                    startMinute: startMinute,
+                    endHour: endHour,
+                    endMinute: endMinute
+                ),
+                daysOfWeek: daysOfWeek ?? [],
+                blockingMode: blockingMode
+            )
+        }
+    }
+
+    @objc private func handleBlockingStatusChanged(_ notification: Notification) {
+        guard let summary = notification.userInfo?["summary"] as? [String: Any] else {
+            return
+        }
+        emitEvent(blockingStatusEvent, body: summary)
+    }
+
+    // MARK: - Dismiss observers
+    private var globalPickerDismissCancellable: AnyCancellable?
+    private var schedulePickerDismissCancellable: AnyCancellable?
+    private var screenTimePermissionCancellable: AnyCancellable?
+
+    deinit {
+        globalPickerDismissCancellable?.cancel()
+        schedulePickerDismissCancellable?.cancel()
+        screenTimePermissionCancellable?.cancel()
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func addListener(_ eventName: String) {}
+
+    @objc func removeListeners(_ count: Double) {}
+
+    // MARK: - App selection helpers
+
+    @objc func selectApps() {
+        DispatchQueue.main.async {
+            let controller = self.activityController()
+            controller.isPresented = !controller.isPresented
+        }
+    }
+
+    @objc func selectAppsForSchedule(_ scheduleId: String) {
+        print("[ControlFunction] selectAppsForSchedule called for \(scheduleId)")
+        DispatchQueue.main.async {
+            let controller = self.activityController()
+            let controlModel = controller.model
+
+            controlModel.initializeBlockingDataIfNeeded()
+
+            if let existingSelection = BlockingScheduleManager.shared.selectionForSchedule(
+                scheduleId: scheduleId)
+            {
+                print(
+                    "[ControlFunction] Restoring existing selection for schedule \(scheduleId); apps: \(existingSelection.applicationTokens.count)"
+                )
+                controlModel.selectionToDiscourage = existingSelection
+                controlModel.storeActivitySelection(existingSelection)
+            } else {
+                if let data = controlModel.getStoredActivitySelectionData(),
+                    let storedSelection = try? JSONDecoder().decode(
+                        FamilyActivitySelection.self, from: data)
+                {
+                    print(
+                        "[ControlFunction] Restoring in-progress selection from stored defaults for schedule \(scheduleId); apps: \(storedSelection.applicationTokens.count)"
+                    )
+                    controlModel.selectionToDiscourage = storedSelection
+                } else {
+                    controlModel.selectionToDiscourage = FamilyActivitySelection()
+                }
+            }
+
+            self.presentPicker(controller)
+
+            self.schedulePickerDismissCancellable?.cancel()
+            self.schedulePickerDismissCancellable = controller.$isPresented
+                .dropFirst()
+                .filter { !$0 }
+                .sink { [weak self, weak controller] _ in
+                    guard let self, let controller else { return }
+                    let selection = controller.model.selectionToDiscourage
+                    print(
+                        "[ControlFunction] Picker dismissed for schedule \(scheduleId): apps=\(selection.applicationTokens.count), categories=\(selection.categoryTokens.count), webDomains=\(selection.webDomainTokens.count)"
+                    )
+                    self.controlModel.storeCurrentSelection()
+
+                    // Verify the selection was stored
+                    if let storedData = self.controlModel.getStoredActivitySelectionData() {
+                        print(
+                            "[ControlFunction] Selection stored successfully, data size: \(storedData.count) bytes"
+                        )
+                    } else {
+                        print(
+                            "[ControlFunction] WARNING: Failed to store selection after picker dismissal"
+                        )
+                    }
+
+                    let applicationsCount = selection.applicationTokens.count
+                    let categoriesCount = selection.categoryTokens.count
+                    let webDomainsCount = selection.webDomainTokens.count
+                    self.emitEvent(
+                        self.scheduleSelectionEvent,
+                        body: [
+                            "scheduleId": scheduleId,
+                            "applicationsCount": applicationsCount,
+                            "categoriesCount": categoriesCount,
+                            "webDomainsCount": webDomainsCount,
+                            "committed": false,
+                        ]
+                    )
+                    BlockingScheduleManager.shared.reapplyCurrentShields()
+                    self.schedulePickerDismissCancellable?.cancel()
+                    self.schedulePickerDismissCancellable = nil
+                }
+        }
+    }
+
+    @objc func storeCurrentSelection() {
+        print("[ControlFunction] storeCurrentSelection called")
+        activityController().model.storeCurrentSelection()
+    }
+
+    @objc func commitSelectionForSchedule(
+        _ scheduleId: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        print("[ControlFunction] commitSelectionForSchedule for \(scheduleId)")
+
+        // Log current selection state before storing
+        let currentSelection = controlModel.selectionToDiscourage
+        print(
+            "[ControlFunction] Current selectionToDiscourage: apps=\(currentSelection.applicationTokens.count), categories=\(currentSelection.categoryTokens.count), webDomains=\(currentSelection.webDomainTokens.count)"
+        )
+
+        controlModel.storeCurrentSelection()
+
+        guard let data = controlModel.getStoredActivitySelectionData() else {
+            print(
+                "[ControlFunction] ERROR: No stored selection data found after storeCurrentSelection()"
+            )
+            print(
+                "[ControlFunction] selectionToDiscourage state: apps=\(currentSelection.applicationTokens.count), categories=\(currentSelection.categoryTokens.count), webDomains=\(currentSelection.webDomainTokens.count)"
+            )
+            reject(
+                "no_selection",
+                "No Screen Time selection found. Use selectAppsForSchedule before saving.",
+                nil
+            )
+            return
+        }
+
+        print("[ControlFunction] Found stored selection data, size: \(data.count) bytes")
+
+        // Check if schedule exists before trying to assign
+        let allSchedules = BlockingScheduleManager.shared.allSchedules()
+        let scheduleExists = allSchedules.contains { ($0["id"] as? String) == scheduleId }
+        print(
+            "[ControlFunction] Schedule \(scheduleId) exists in BlockingScheduleManager: \(scheduleExists)"
+        )
+
+        if !scheduleExists {
+            print(
+                "[ControlFunction] WARNING: Schedule \(scheduleId) does not exist yet. This might be a new schedule."
+            )
+        }
+
+        do {
+            try BlockingScheduleManager.shared.assignSelectionData(data, to: scheduleId)
+            let selection = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+            let count = selection?.applicationTokens.count ?? 0
+            let categories = selection?.categoryTokens.count ?? 0
+            let web = selection?.webDomainTokens.count ?? 0
+            print(
+                "[ControlFunction] Successfully stored selection for schedule \(scheduleId): apps=\(count), categories=\(categories), webDomains=\(web)"
+            )
+
+            // Verify the selection was stored
+            if let storedSelection = BlockingScheduleManager.shared.selectionForSchedule(
+                scheduleId: scheduleId)
+            {
+                print(
+                    "[ControlFunction] Verified stored selection: apps=\(storedSelection.applicationTokens.count), categories=\(storedSelection.categoryTokens.count), webDomains=\(storedSelection.webDomainTokens.count)"
+                )
+            } else {
+                print(
+                    "[ControlFunction] WARNING: Could not retrieve stored selection immediately after assignment"
+                )
+            }
+
+            emitEvent(
+                scheduleSelectionEvent,
+                body: [
+                    "scheduleId": scheduleId,
+                    "applicationsCount": count,
+                    "categoriesCount": categories,
+                    "webDomainsCount": web,
+                    "committed": true,
+                ]
+            )
+            resolve(nil)
+        } catch {
+            print("[ControlFunction] ERROR assigning selection data: \(error.localizedDescription)")
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    @objc func assignStoredSelectionToSchedule(
+        _ scheduleId: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard let data = controlModel.getStoredActivitySelectionData() else {
+            reject(
+                "no_selection",
+                "No Screen Time selection found. Use selectAppsForSchedule before saving.",
+                nil
+            )
+            return
+        }
+
+        do {
+            try BlockingScheduleManager.shared.assignSelectionData(data, to: scheduleId)
+            let selection = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+            let count = selection?.applicationTokens.count ?? 0
+            print(
+                "[ControlFunction] assignStoredSelectionToSchedule applied \(count) app token(s) to \(scheduleId)"
+            )
+            resolve(nil)
+        } catch {
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    @objc func setSelectionDataForSchedule(
+        _ scheduleId: String,
+        base64: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard let data = Data(base64Encoded: base64) else {
+            reject("invalid_base64", "Selection payload must be base64 encoded", nil)
+            return
+        }
+
+        do {
+            try BlockingScheduleManager.shared.assignSelectionData(data, to: scheduleId)
+            resolve(nil)
+        } catch {
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    // MARK: - Schedule management
+
+    @objc func setBlockingSchedules(
+        _ payload: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        print("[ControlFunction] setBlockingSchedules payload: \(payload)")
+
+        guard let data = payload.data(using: .utf8) else {
+            print("[ControlFunction] setBlockingSchedules invalid payload")
+            reject("invalid_payload", "Unable to encode payload", nil)
+            return
+        }
+
+        do {
+            let decodedPayloads = try JSONDecoder().decode(
+                [BlockingSchedule.Payload].self, from: data)
+            let schedules = decodedPayloads.map { $0.toSchedule() }
+            print(
+                "[ControlFunction] setBlockingSchedules scheduling IDs: \(schedules.map { $0.id })"
+            )
+            try BlockingScheduleManager.shared.addOrUpdateSchedules(schedules)
+            resolve(nil)
+        } catch {
+            print("[ControlFunction] setBlockingSchedules error: \(error)")
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    @objc(setHabitBlockingWindows:resolve:reject:)
+    func setHabitBlockingWindows(
+        _ payload: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        let trimmedPayload = payload.trimmingCharacters(in: .whitespacesAndNewlines)
+        print("[ControlFunction] setHabitBlockingWindows payload: \(trimmedPayload)")
+
+        let decoder = JSONDecoder()
+
+        do {
+            let windowsPayload: [HabitWindowPayload]
+
+            if trimmedPayload.isEmpty {
+                windowsPayload = []
+            } else if let data = trimmedPayload.data(using: .utf8) {
+                windowsPayload = try decoder.decode([HabitWindowPayload].self, from: data)
+            } else {
+                reject("invalid_payload", "Unable to encode habit windows payload", nil)
+                return
+            }
+
+            let definitions = windowsPayload.map { $0.toDefinition() }
+            try BlockingScheduleManager.shared.upsertHabitSchedules(definitions)
+            print(
+                "[ControlFunction] setHabitBlockingWindows definitions: \(definitions.map { $0.id })"
+            )
+            resolve(nil)
+        } catch {
+            print("[ControlFunction] setHabitBlockingWindows error: \(error)")
+            reject("habit_schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    @objc func startBlockingSchedule(
+        _ scheduleId: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        do {
+            try BlockingScheduleManager.shared.startScheduleNow(scheduleId: scheduleId)
+            print("[ControlFunction] startBlockingSchedule for \(scheduleId)")
+            resolve(nil)
+        } catch {
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    @objc func getBlockingSchedules(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        resolve(BlockingScheduleManager.shared.allSchedules())
+    }
+
+    @objc func getScheduleBlockingStatus(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        resolve(BlockingScheduleManager.shared.currentBlockingStatusSummary())
+    }
+
+    @objc func loadSelectionForSchedule(
+        _ scheduleId: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        print("[ControlFunction] loadSelectionForSchedule called for \(scheduleId)")
+
+        // Check if schedule exists
+        let allSchedules = BlockingScheduleManager.shared.allSchedules()
+        let scheduleExists = allSchedules.contains { ($0["id"] as? String) == scheduleId }
+        print("[ControlFunction] Schedule \(scheduleId) exists: \(scheduleExists)")
+
+        guard
+            let selection = BlockingScheduleManager.shared.selectionForSchedule(
+                scheduleId: scheduleId)
+        else {
+            print("[ControlFunction] loadSelectionForSchedule no selection for \(scheduleId)")
+            print(
+                "[ControlFunction] Available schedules: \(allSchedules.map { ($0["id"] as? String) ?? "unknown" }.joined(separator: ", "))"
+            )
+            resolve([
+                "hasSelection": false,
+                "applicationsCount": 0,
+                "categoriesCount": 0,
+                "webDomainsCount": 0,
+            ])
+            return
+        }
+
+        print(
+            "[ControlFunction] Found selection for \(scheduleId): apps=\(selection.applicationTokens.count), categories=\(selection.categoryTokens.count), webDomains=\(selection.webDomainTokens.count)"
+        )
+
+        DispatchQueue.main.async {
+            let controlModel = ControlModel.shared
+            controlModel.initializeBlockingDataIfNeeded()
+            controlModel.selectionToDiscourage = selection
+            controlModel.storeActivitySelection(selection)
+
+            let payload: [String: Any] = [
+                "hasSelection": true,
+                "applicationsCount": selection.applicationTokens.count,
+                "categoriesCount": selection.categoryTokens.count,
+                "webDomainsCount": selection.webDomainTokens.count,
+            ]
+
+            resolve(payload)
+        }
+    }
+
+    @objc func clearAllBlockingSchedules(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        print("[ControlFunction] clearAllBlockingSchedules called")
+        BlockingScheduleManager.shared.clearAllSchedules()
+        resolve(nil)
+    }
+
+    @objc func removeBlockingSchedule(
+        _ scheduleId: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        do {
+            try BlockingScheduleManager.shared.removeSchedule(withId: scheduleId)
+            resolve(nil)
+        } catch {
+            reject("schedule_error", error.localizedDescription, error)
+        }
+    }
+
+    // MARK: - Global Habit Blocking
+
+    @objc func selectAppsForGlobalHabitBlocking() {
+        print("[ControlFunction] selectAppsForGlobalHabitBlocking called")
+        DispatchQueue.main.async {
+            let controller = self.activityController()
+            let controlModel = controller.model
+
+            controlModel.initializeBlockingDataIfNeeded()
+
+            if let existingSelection = BlockingScheduleManager.shared
+                .selectionForGlobalHabitBlocking()
+            {
+                print(
+                    "[ControlFunction] Restoring existing global habit blocking selection; apps: \(existingSelection.applicationTokens.count)"
+                )
+                controlModel.selectionToDiscourage = existingSelection
+                controlModel.storeActivitySelection(existingSelection)
+            } else {
+                controlModel.selectionToDiscourage = FamilyActivitySelection()
+            }
+
+            self.presentPicker(controller)
+
+            // Observe dismissal and auto-commit the global selection
+            self.globalPickerDismissCancellable?.cancel()
+            self.globalPickerDismissCancellable = controller.$isPresented
+                .dropFirst()  // ignore initial value
+                .filter { !$0 }  // when picker is dismissed
+                .sink { [weak self] _ in
+                    guard let self else { return }
+                    self.controlModel.storeCurrentSelection()
+                    if let data = self.controlModel.getStoredActivitySelectionData() {
+                        BlockingScheduleManager.shared.setGlobalHabitBlockingSelection(data)
+                        let selection = try? JSONDecoder().decode(
+                            FamilyActivitySelection.self, from: data)
+                        let apps = selection?.applicationTokens.count ?? 0
+                        let categories = selection?.categoryTokens.count ?? 0
+                        let web = selection?.webDomainTokens.count ?? 0
+                        print(
+                            "[ControlFunction] Auto-committed global selection on dismiss; apps: \(apps)"
+                        )
+                        self.emitEvent(
+                            self.globalSelectionEvent,
+                            body: [
+                                "applicationsCount": apps,
+                                "categoriesCount": categories,
+                                "webDomainsCount": web,
+                                "committed": false,
+                            ]
+                        )
+                    } else {
+                        print("[ControlFunction] No selection found to auto-commit on dismiss")
+                    }
+                    self.globalPickerDismissCancellable?.cancel()
+                    self.globalPickerDismissCancellable = nil
+                }
+        }
+    }
+
+    @objc(commitGlobalHabitBlockingSelection:reject:)
+    func commitGlobalHabitBlockingSelection(
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        print("[ControlFunction] commitGlobalHabitBlockingSelection called")
+        controlModel.storeCurrentSelection()
+
+        guard let data = controlModel.getStoredActivitySelectionData() else {
+            reject(
+                "no_selection",
+                "No Screen Time selection found. Use selectAppsForGlobalHabitBlocking before saving.",
+                nil
+            )
+            return
+        }
+
+        BlockingScheduleManager.shared.setGlobalHabitBlockingSelection(data)
+        let selection = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+        let count = selection?.applicationTokens.count ?? 0
+        let categories = selection?.categoryTokens.count ?? 0
+        let web = selection?.webDomainTokens.count ?? 0
+        print(
+            "[ControlFunction] Stored global habit blocking selection with \(count) app token(s)"
+        )
+        emitEvent(
+            globalSelectionEvent,
+            body: [
+                "applicationsCount": count,
+                "categoriesCount": categories,
+                "webDomainsCount": web,
+                "committed": true,
+            ]
+        )
+        resolve(nil)
+    }
+
+    @objc func getGlobalHabitBlockingEnabled(_ callback: RCTResponseSenderBlock) {
+        let enabled = BlockingScheduleManager.shared.isGlobalHabitBlockingEnabled
+        callback([enabled])
+    }
+
+    @objc func setGlobalHabitBlockingEnabled(_ enabled: Bool) {
+        BlockingScheduleManager.shared.isGlobalHabitBlockingEnabled = enabled
+    }
+
+    @objc func getGlobalHabitBlockingSelection(_ callback: RCTResponseSenderBlock) {
+        guard let selection = BlockingScheduleManager.shared.getGlobalHabitBlockingSelection()
+        else {
+            callback([
+                [
+                    "hasSelection": false,
+                    "applicationsCount": 0,
+                    "categoriesCount": 0,
+                    "webDomainsCount": 0,
+                ]
+            ])
+            return
+        }
+
+        callback([
+            [
+                "hasSelection": true,
+                "applicationsCount": selection.applicationTokens.count,
+                "categoriesCount": selection.categoryTokens.count,
+                "webDomainsCount": selection.webDomainTokens.count,
+            ]
+        ])
+    }
+
+    // MARK: - Legacy helpers
+
+    @objc func getBlockedAppsCount(_ callback: RCTResponseSenderBlock) {
+        let selection = BlockingScheduleManager.shared.getGlobalHabitBlockingSelection()
+        let blockedApplicationsCount = selection?.applicationTokens.count ?? 0
+        let blockedCategoriesCount = selection?.categoryTokens.count ?? 0
+
+        let blockListCountData: [String: Any] = [
+            "blockedApplicationsCount": blockedApplicationsCount,
+            "blockedApplicationCategoriesCount": blockedCategoriesCount,
+        ]
+
+        print(
+            "[ControlFunction] getBlockedAppsCount -> apps: \(blockedApplicationsCount), categories: \(blockedCategoriesCount)"
+        )
+        callback([blockListCountData])
+    }
+
+    // MARK: - Permissions
+
+    @objc func checkPermissionsFromReact(_ callback: @escaping RCTResponseSenderBlock) {
+        Task {
+            do {
+                try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+                callback([NSNull(), true])
+            } catch {
+                print("Failed to authenticate with error: \(error)")
+                callback([error.localizedDescription, false])
+            }
+        }
+    }
+
+    @objc func getScreenTimePermission(_ callback: @escaping RCTResponseSenderBlock) {
+        let cancellable = AuthorizationCenter.shared.$authorizationStatus
+            .receive(on: DispatchQueue.main)
+            .first()
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { status in
+                    let value: Int
+                    switch status {
+                    case .notDetermined:
+                        value = ScreenTimePermissionStatus.notDetermined.rawValue
+                    case .denied:
+                        value = ScreenTimePermissionStatus.denied.rawValue
+                    case .approved:
+                        value = ScreenTimePermissionStatus.approved.rawValue
+                    @unknown default:
+                        value = ScreenTimePermissionStatus.notDetermined.rawValue
+                    }
+                    callback([value])
+                }
+            )
+        // Keep the subscription alive until we get one value (first() completes the pipeline).
+        screenTimePermissionCancellable?.cancel()
+        screenTimePermissionCancellable = cancellable
+    }
+
+    @objc func revokeScreenTimePermission(_ callback: @escaping RCTResponseSenderBlock) {
+        Task {
+            AuthorizationCenter.shared.revokeAuthorization {
+                do {
+                    try $0.get()
+                    callback([true])
+                } catch {
+                    callback([false])
+                }
+            }
+        }
+    }
+
+    private enum ScreenTimePermissionStatus: Int {
+        case notDetermined = 0
+        case denied = 1
+        case approved = 2
+    }
+
+    // MARK: - Immediate blocking helpers
+
+    @objc func startBlockingDistractingApps(_ hours: Int, minutes: Int) {
+        let controller = activityController()
+        NativeBlockingLogger.info("immediate_block_start hours=\(hours) minutes=\(minutes)")
+
+        let monitoringHours = hours
+        let monitoringMinutes = minutes
+
+        if let aggregatedSelection = BlockingScheduleManager.shared
+            .aggregatedSelectionForImmediateBlocking()
+        {
+            NativeBlockingLogger.info(
+                "immediate_block_source=aggregated schedules apps=\(aggregatedSelection.applicationTokens.count) categories=\(aggregatedSelection.categoryTokens.count) domains=\(aggregatedSelection.webDomainTokens.count)"
+            )
+            print(
+                "[ControlFunction] Using aggregated selection for immediate blocking; apps: \(aggregatedSelection.applicationTokens.count)"
+            )
+            controller.model.selectionToDiscourage = aggregatedSelection
+            controller.model.storeActivitySelection(aggregatedSelection)
+        } else if BlockingScheduleManager.shared.isGlobalHabitBlockingEnabled,
+            let globalSelection = BlockingScheduleManager.shared
+                .getGlobalHabitBlockingSelection()
+        {
+            NativeBlockingLogger.info(
+                "immediate_block_source=global_habit apps=\(globalSelection.applicationTokens.count) categories=\(globalSelection.categoryTokens.count) domains=\(globalSelection.webDomainTokens.count)"
+            )
+            print(
+                "[ControlFunction] Using global habit blocking selection for immediate blocking; apps: \(globalSelection.applicationTokens.count)"
+            )
+            controller.model.selectionToDiscourage = globalSelection
+            controller.model.storeActivitySelection(globalSelection)
+        } else {
+            NativeBlockingLogger.info("immediate_block_source=empty_selection")
+            let emptySelection = FamilyActivitySelection()
+            controller.model.selectionToDiscourage = emptySelection
+            controller.model.storeActivitySelection(emptySelection)
+            controller.model.store.clearAllSettings()
+        }
+
+        let sharedDefaults = UserDefaults(suiteName: "group.com.FocusBear")
+        sharedDefaults?.set(monitoringHours, forKey: "current_focus_hours")
+        sharedDefaults?.set(monitoringMinutes, forKey: "current_focus_minutes")
+        sharedDefaults?.synchronize()
+
+        let totalMinutes = (hours * 60) + minutes
+        let now = Date()
+
+        let startTime = now.addingTimeInterval(-15 * 60)
+        let endTime = now.addingTimeInterval(Double(totalMinutes) * 60)
+
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(
+                hour: Calendar.current.component(.hour, from: startTime),
+                minute: Calendar.current.component(.minute, from: startTime),
+                second: Calendar.current.component(.second, from: startTime)
+            ),
+            intervalEnd: DateComponents(
+                hour: Calendar.current.component(.hour, from: endTime),
+                minute: Calendar.current.component(.minute, from: endTime),
+                second: Calendar.current.component(.second, from: endTime)
+            ),
+            repeats: false
+        )
+
+        let center = DeviceActivityCenter()
+        do {
+            try center.startMonitoring(.daily, during: schedule)
+            NativeBlockingLogger.info(
+                "immediate_block_monitoring_started durationMinutes=\(totalMinutes)")
+            print(
+                "[ControlFunction] startBlockingDistractingApps monitoring for \(totalMinutes) minutes"
+            )
+        } catch {
+            NativeBlockingLogger.error(
+                "immediate_block_monitoring_failed error=\(error.localizedDescription)")
+            print("Could not start monitoring: \(error)")
+        }
+
+        controller.model.initiateMonitoring(hours: monitoringHours, minutes: monitoringMinutes)
+    }
+
+    @objc func setCurrentUseGlobalBlockList(_ useGlobal: Bool) {
+        print("[ControlFunction] setCurrentUseGlobalBlockList called with useGlobal: \(useGlobal)")
+        BlockingScheduleManager.shared.setCurrentUseGlobalBlockList(useGlobal)
+    }
+
+    @objc func stopBlockingDistractingApps() {
+        BlockingScheduleManager.shared.setCurrentUseGlobalBlockList(false)
+
+        let controller = activityController()
+        NativeBlockingLogger.info("immediate_block_stop")
+        controller.model.store.clearAllSettings()
+
+        if let effectiveSelection = BlockingScheduleManager.shared
+            .aggregatedSelectionForImmediateBlocking()
+        {
+            controller.model.selectionToDiscourage = effectiveSelection
+            controller.model.storeActivitySelection(effectiveSelection)
+        } else {
+            let emptySelection = FamilyActivitySelection()
+            controller.model.selectionToDiscourage = emptySelection
+            controller.model.storeActivitySelection(emptySelection)
+        }
+
+        BlockingScheduleManager.shared.reapplyCurrentShields()
+    }
+
+    @objc func pauseBlockingWithResume(_ hours: Int, minutes: Int, reason: String) {
+        let controller = activityController()
+        NativeBlockingLogger.info(
+            "schedule_pause_with_resume hours=\(hours) minutes=\(minutes) reason=\(reason)"
+        )
+
+        let sharedDefaults = UserDefaults(suiteName: "group.com.FocusBear")
+        let currentFocusHours = sharedDefaults?.integer(forKey: "current_focus_hours") ?? 0
+        let currentFocusMinutes = sharedDefaults?.integer(forKey: "current_focus_minutes") ?? 0
+
+        sharedDefaults?.set(currentFocusHours, forKey: "stored_focus_hours")
+        sharedDefaults?.set(currentFocusMinutes, forKey: "stored_focus_minutes")
+        sharedDefaults?.synchronize()
+
+        ControlModel.isBlockingEnabled = false
+
+        let totalMinutes = (hours * 60) + minutes
+        let now = Date()
+        let resumeDate = now.addingTimeInterval(Double(totalMinutes) * 60)
+
+        controller.model.store.clearAllSettings()
+        BlockingScheduleManager.shared.pauseActiveSchedules(until: resumeDate, reason: reason)
+        scheduleResumeAfterPause(hours: hours, minutes: minutes, reason: reason)
+    }
+
+    private func scheduleResumeAfterPause(hours: Int, minutes: Int, reason: String) {
+        let totalMinutes = (hours * 60) + minutes
+        let now = Date()
+
+        let startTime = now.addingTimeInterval(-15 * 60)
+        let endTime = now.addingTimeInterval(Double(totalMinutes) * 60)
+
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(
+                hour: Calendar.current.component(.hour, from: startTime),
+                minute: Calendar.current.component(.minute, from: startTime),
+                second: Calendar.current.component(.second, from: startTime)
+            ),
+            intervalEnd: DateComponents(
+                hour: Calendar.current.component(.hour, from: endTime),
+                minute: Calendar.current.component(.minute, from: endTime),
+                second: Calendar.current.component(.second, from: endTime)
+            ),
+            repeats: false
+        )
+
+        let center = DeviceActivityCenter()
+        let activityName = DeviceActivityName(rawValue: reason)
+
+        do {
+            try center.startMonitoring(activityName, during: schedule)
+            print(
+                "[ControlFunction] pauseBlockingWithResume scheduled resume in \(totalMinutes) minutes for reason: \(reason)"
+            )
+        } catch {
+            print("Could not schedule resume after pause: \(error)")
+        }
+    }
+
+    @objc func pauseSchedulesIndefinitely() {
+        NativeBlockingLogger.info("schedule_pause_indefinite")
+        ControlModel.isBlockingEnabled = false
+        BlockingScheduleManager.shared.pauseActiveSchedules(until: nil, reason: "indefinite")
+
+        let controller = activityController()
+        controller.model.store.clearAllSettings()
+    }
+
+    @objc func resumeScheduleBlocking() {
+        NativeBlockingLogger.info("schedule_resume_requested")
+        BlockingScheduleManager.shared.resumePausedSchedules()
+    }
+
+    // MARK: - Misc helpers
+
+    @objc func clearBlockList() {
+        let controller = activityController()
+        _ = controller.model.prefs.clearBlockList()
+        controller.model.initDiscourageSelection()
+
+        DispatchQueue.main.async {
+            controller.isPresented = false
+        }
+    }
+
+    @objc func shouldViewDisable(_ callback: RCTResponseSenderBlock) {
+        let controller = activityController()
+        let shield = controller.model.store.shield
+        let defaultApplicationCategories = ShieldSettings.ActivityCategoryPolicy<Application>
+            .specific(Set(), except: Set())
+        let defaultWebDomainsCategories = ShieldSettings.ActivityCategoryPolicy<WebDomain>
+            .specific(
+                Set(), except: Set())
+
+        let isCategoriesBlank =
+            (shield.applicationCategories == nil
+                || shield.applicationCategories == defaultApplicationCategories)
+            && (shield.webDomainCategories == nil
+                || shield.webDomainCategories == defaultWebDomainsCategories)
+
+        if shield.applications == nil && shield.webDomains == nil && isCategoriesBlank {
+            callback([false])
+            return
+        }
+
+        callback([true])
+    }
+
+    @objc func setBlockingReason(_ reason: String) {
+        controlModel.prefs.setBlockDistractionReason(reason: reason)
+        reloadWidget()
+    }
+
+    @objc func setNextActivityInfo(_ activityInfo: String) {
+        controlModel.prefs.setNextActivityInfo(activityInfo: activityInfo)
+        reloadWidget()
+    }
+
+    @objc func reloadWidget() {
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+    }
+
+    @objc func setBlockingStatus(_ status: Bool) {
+        if status {
+            BlockingScheduleManager.shared.setCurrentUseGlobalBlockList(true)
+        }
+        ControlModel.isBlockingEnabled = status
+        // IMPORTANT: When the distraction-blocking toggle flips, we must reapply (or clear)
+        // ManagedSettings shields immediately. Otherwise stale shields may remain active
+        // even if the schedule evaluation says there are no effective schedules.
+        BlockingScheduleManager.shared.reapplyCurrentShields()
+    }
+
+    @objc func setHighFrictionMode(_ status: Bool) {
+        ControlModel.highFrictionMode = status
+    }
+
+    @objc func setSuperStrictMode(_ status: Bool) {
+        let sharedDefaults = UserDefaults(suiteName: "group.com.FocusBear")
+        sharedDefaults?.set(status, forKey: SoftBlockingKeys.superStrictMode)
+        sharedDefaults?.synchronize()
+    }
+
+    @objc func saveCustomBlockedMessage(_ message: String) {
+        _ = controlModel.prefs.setCustomBlockedMessage(message: message)
+        reloadWidget()
+    }
+
+    @objc func setStreakData(_ morningStreak: Int, eveningStreak: Int, focusStreak: Int, morningDone: Bool, eveningDone: Bool, focusDone: Bool) {
+        controlModel.prefs.setStreakData(
+            morningStreak: morningStreak,
+            eveningStreak: eveningStreak,
+            focusStreak: focusStreak,
+            morningDone: morningDone,
+            eveningDone: eveningDone,
+            focusDone: focusDone
+        )
+        reloadWidget()
+    }
+
+    @objc func saveUnlockDuration(_ minutes: Int, seconds: Int) {
+        let sharedDefaults = UserDefaults(suiteName: "group.com.FocusBear")
+        sharedDefaults?.set(minutes, forKey: SoftBlockingKeys.unlockDurationMinutes)
+        sharedDefaults?.set(seconds, forKey: SoftBlockingKeys.unlockDurationSeconds)
+        sharedDefaults?.synchronize()
+    }
+
+    @objc func saveBaseDelay(_ seconds: Int) {
+        let sharedDefaults = UserDefaults(suiteName: "group.com.FocusBear")
+        sharedDefaults?.set(seconds, forKey: SoftBlockingKeys.pauseBaseDelaySeconds)
+        sharedDefaults?.synchronize()
+    }
+
+    @objc static func requiresMainQueueSetup() -> Bool {
+        true
+    }
+}

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Focus Bear</string>
+    <string name="move_back"><u>Continue with your routine</u></string>
+    <string name="accessibility_service_description">Focus Bear uses this service to monitor browser URLs for focus mode features.</string>
+    <string name="widget_description">Shows your current routine status and next habit at a glance.</string>
+    <string name="streak_widget_description">Displays your morning, evening, and focus streaks.</string>
+    <string name="blocked_message_widget_description">Shows your custom motivational message for when apps are blocked.</string>
+
+    <!-- Widget placeholders. JS overwrites these with the app-selected language after the app syncs widget state. -->
+    <string name="widget_default_routine">No routine</string>
+    <string name="widget_no_reason_provided">All set!</string>
+    <string name="widget_no_next_habit">Nothing scheduled</string>
+    <string name="widget_whats_next">What\'s next:</string>
+    <string name="widget_streak_title">Streaks</string>
+    <string name="widget_streak_morning">Morning</string>
+    <string name="widget_streak_evening">Evening</string>
+    <string name="widget_streak_focus">Focus</string>
+    <string name="widget_streak_days">days</string>
+    <string name="widget_preview_next_habit">Next up: Morning routine</string>
+    <string name="widget_focus_bear_logo">Focus Bear logo</string>
+    <string name="widget_focus_bear_icon">Focus Bear icon</string>
+    <string name="default_blocked_message">\"The secret of getting ahead is getting started.\" \u2013 Mark Twain</string>
+    <string-array name="default_blocked_message_quotes">
+        <item>&quot;Success is the sum of small efforts, repeated day in and day out.&quot; - Robert Collier</item>
+        <item>&quot;The secret of getting ahead is getting started.&quot; - Mark Twain</item>
+        <item>&quot;Discipline is choosing between what you want now and what you want most.&quot; - Abraham Lincoln</item>
+        <item>&quot;Your future is created by what you do today, not tomorrow.&quot; - Robert Kiyosaki</item>
+        <item>&quot;It always seems impossible until it&apos;s done.&quot; - Nelson Mandela</item>
+    </string-array>
+    <string name="shortcut_start_focus_short">Start Focus</string>
+    <string name="shortcut_start_focus_long">Start a Focus Session</string>
+    <string name="shortcut_start_habit_short">Start next habit</string>
+    <string name="shortcut_start_habit_long">Start next habit</string>
+    <string name="shortcut_add_task_short">Add Task</string>
+    <string name="shortcut_add_task_long">Add a new task</string>
+    <string name="shortcut_disabled_message">Shortcut is disabled</string>
+</resources>

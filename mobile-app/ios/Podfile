@@ -1,0 +1,99 @@
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+platform :ios, '15.5'
+prepare_react_native_project!
+
+linkage = ENV['USE_FRAMEWORKS']
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
+
+abstract_target 'FocusBear' do
+  config = use_native_modules!
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'PushNotifications'
+  pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  pod 'GoogleUtilities', :modular_headers => true
+
+  $RNFirebaseAsStaticFramework = true
+
+  target 'Development' do
+    # Development-specific pods
+    # Explicitly add TweetNacl to fix CTweetNacl module dependency issue
+    pod 'TweetNacl', '~> 1.0'
+  end
+
+  target 'Production' do
+    # Production-specific pods
+  end
+
+  target 'Staging' do
+    # Staging-specific pods
+  end
+
+  post_install do |installer|
+    # Path to the Yoga headers in Private
+    private_yoga_headers = "#{installer.sandbox.root}/Headers/Private/Yoga"
+    # Path to the Yoga headers in Public
+    public_yoga_headers = "#{installer.sandbox.root}/Headers/Public/Yoga"
+  
+    # Copy the Yoga headers from Private to Public
+    FileUtils.mkdir_p(public_yoga_headers) unless Dir.exist?(public_yoga_headers)
+    system("rsync -a #{private_yoga_headers}/ #{public_yoga_headers}")  
+    
+    system("chmod -R u+w Pods/RCT-Folly")
+    Dir.glob("Pods/RCT-Folly/folly/Portability.h").each do |file|
+      text = File.read(file)
+      new_contents = text.gsub('#define FOLLY_HAS_COROUTINES 1', '#define FOLLY_HAS_COROUTINES 0')
+      File.open(file, "w") { |file| file.puts new_contents }
+    end  
+    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+      # :ccache_enabled => true
+    )
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.5'
+
+        # https://stackoverflow.com/a/79770934
+        # Fix for build error on Xcode 26.0: Disable explicit module builds for TweetNacl pod
+        if ['TweetNacl'].include?(target.name)
+          config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULES'] = 'NO'
+          # Additional settings to resolve module dependencies
+          config.build_settings['SWIFT_ENABLE_INCREMENTAL_COMPILATION'] = 'NO'
+          config.build_settings['SWIFT_COMPILATION_MODE'] = 'wholemodule'
+        end
+
+        # Fix Auth0 Swift 6 strict concurrency errors on Xcode 26
+        if ['Auth0'].include?(target.name)
+          config.build_settings['SWIFT_STRICT_CONCURRENCY'] = 'minimal'
+          config.build_settings['SWIFT_VERSION'] = '5.0'
+        end
+
+        # Fix fmt consteval errors with Xcode 26 clang
+        if ['fmt'].include?(target.name)
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'FMT_USE_CONSTEVAL=0'
+        end
+      end
+    end
+
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULES'] = 'NO'
+    end
+  end
+end

@@ -1,0 +1,272 @@
+{
+  "src\\screens\\Home\\components\\ActivityItem.js": [
+    "test:id/habit-autostart-text",
+    "test:id/start-activity-button",
+    "test:id/skip-activity-button",
+    "test:id/did-already-activity-button",
+    "test:id/edit-activity-button",
+    "test:id/delete-activity-button"
+  ],
+  "src\\screens\\BlockingSchedule\\components\\AddBlockButton.tsx": ["test:id/add-block-button"],
+  "src\\screens\\RoutineDetail\\components\\AddNoteView.js": ["test:id/add-note-dismiss-keyboard"],
+  "src\\screens\\ToDos\\Components\\AddTaskPanel.js": [
+    "test:id/task-checkbox",
+    "test:id/input-task",
+    "test:id/submit-task"
+  ],
+  "src\\screens\\RoutineSuggestion\\components\\AiAdjustButton.tsx": ["test:id/open-ai-adjust-button"],
+  "src\\components\\AppHeader.tsx": ["test:id/header-back-button"],
+  "src\\screens\\DataCollection\\ApplicationForm.tsx": [
+    "test:id/whatsapp-consent-toggle",
+    "test:id/whatsapp-consent-checkbox",
+    "test:id/register-button"
+  ],
+  "src\\navigation\\AppLauncher\\AppMenuOverlay.js": ["test:id/launcher-search-input", "test:id/launcher-clear-search"],
+  "src\\screens\\AppsBlockList\\AppsBlockList.js": [
+    "test:id/app-search-box",
+    "test:id/select-all-pressable",
+    "test:id/select-all-checkbox",
+    "test:id/clear-selected-chip",
+    "test:id/blocking-type-options"
+  ],
+  "src\\screens\\BearsonaSettings\\BearsonaSettings.tsx": [
+    "test:id/custom-language-cancel",
+    "test:id/custom-language-continue"
+  ],
+  "src\\screens\\BlockingSchedule\\BlockingSchedule.js": [
+    "test:id/blocking-schedule-name",
+    "test:id/delete-blocking-schedule",
+    "test:id/confirm-edit-habit"
+  ],
+  "src\\screens\\BlockingSchedule\\BlockingScheduleList.js": [
+    "test:id/choose-apps-for-global-habit-blocking",
+    "test:id/add-blocking-schedule-inline"
+  ],
+  "src\\screens\\Home\\components\\BlockingStatusBanner.js": [
+    "test:id/blocking-status-resume",
+    "test:id/blocking-status-info",
+    "test:id/blocking-status-pause"
+  ],
+  "src\\screens\\OnBoarding\\BlockList.js": ["test:id/blocklist-skip-button"],
+  "src\\screens\\BlockUrl\\BlockUrl.tsx": ["test:id/need-help"],
+  "src\\screens\\BreathingExercise\\BreathingExercise.js": [
+    "test:id/breathing-dont-open-button",
+    "test:id/breathing-want-open-button"
+  ],
+  "src\\components\\ButtonWithToolTipModal.js": ["test:id/info-tooltip", "test:id/info-tooltip-close"],
+  "src\\screens\\OnBoarding\\components\\CarouselPagination.js": ["test:id/carousel-back", "test:id/carousel-forward"],
+  "src\\screens\\BlockingSchedule\\components\\ChooseAppsButton.tsx": ["test:id/choose-apps"],
+  "src\\screens\\DataCollection\\CollectData.tsx": ["test:id/upload-screenshot-button"],
+  "src\\screens\\Complete\\CompleteScreen.js": ["test:id/press-activity-complete-button", "test:id/skip-habit"],
+  "src\\components\\ContinueWithGoogleButton.js": ["test:id/google-sign-up"],
+  "src\\components\\DeleteAccountConfirmationModal.js": [
+    "test:id/delete-account-contact-toggle",
+    "test:id/delete-account-contact-checkbox"
+  ],
+  "src\\screens\\Home\\components\\DeleteHabitConfirmationModal.js": [
+    "test:id/cancel-delete-habit-button",
+    "test:id/confirm-delete-habit-button"
+  ],
+  "src\\screens\\HabitSettingScreen\\components\\DurationSetting.js": [
+    "test:id/duration-minutes",
+    "test:id/duration-seconds"
+  ],
+  "src\\screens\\HabitSettingScreen\\components\\DurationToggle.js": ["test:id/completion-requirement-input"],
+  "src\\screens\\RoutineSuggestion\\components\\EditActivityModal.tsx": ["test:id/save-activity-button"],
+  "src\\screens\\EditHabits\\EditHabits.js": ["test:id/retry-webview-button"],
+  "src\\screens\\Settings\\EditNicknameModal.js": ["test:id/cancel-button", "test:id/save-button"],
+  "src\\screens\\EditQuickBreaksScreen\\EditQuickBreaksScreen.js": ["test:id/confirm-edit-quick-break"],
+  "src\\screens\\EditQuickBreaksScreen\\components\\EmojiPicker.js": ["test:id/emoji-picker-close-button"],
+  "src\\screens\\RoutineSuggestion\\components\\ErrorState.tsx": [
+    "test:id/retry-button",
+    "test:id/continue-error-button"
+  ],
+  "src\\screens\\FocusMode\\FinishFocusing.js": [
+    "test:id/enter-finish-focusing-desc2",
+    "test:id/enter-finish-focusing-desc3"
+  ],
+  "src\\screens\\FocusMode\\Focusing.js": ["test:id/enter-focusing-thoughts"],
+  "src\\screens\\FocusMode\\FocusMode.js": ["test:id/start-focusing"],
+  "src\\screens\\Home\\components\\OverviewTab\\FocusModeCard.tsx": ["test:id/focus-mode-card-new-session"],
+  "src\\screens\\FocusMode\\FocusMusicButton.tsx": ["test:id/focus-music-button"],
+  "src\\screens\\FocusMode\\FocusSettings.js": ["test:id/super-strict-toggle", "test:id/super-strict-tooltip"],
+  "src\\screens\\ForgotPassword\\ForgotPassword.js": [
+    "test:id/email",
+    "test:id/verify",
+    "test:id/reset-password",
+    "test:id/back-to-signin"
+  ],
+  "src\\screens\\FrictionSettings\\FrictionSettings.js": [
+    "test:id/friction-password-input",
+    "test:id/friction-confirm-password-input"
+  ],
+  "src\\screens\\FlankerBearGame\\GameComplete.tsx": ["test:id/flanker-game-complete-continue-button"],
+  "src\\screens\\FlankerBearGame\\GameExplanation.tsx": ["test:id/flanker-game-explanation-play-button"],
+  "src\\screens\\FlankerBearGame\\GamePlay.tsx": [
+    "test:id/flanker-game-left-button",
+    "test:id/flanker-game-right-button"
+  ],
+  "src\\screens\\FlankerBearGame\\GameTransition.tsx": ["test:id/flanker-game-start-main-button"],
+  "src\\screens\\OnBoarding\\Goals.js": [
+    "test:id/goal-organize-tasks-using-ai",
+    "test:id/goal-help-me-develop",
+    "test:id/goal-help-me-stay",
+    "test:id/continue-or-do-it-later",
+    "test:id/learn-about-features",
+    "test:id/save-goals-something-else"
+  ],
+  "src\\screens\\OnBoarding\\GrantPermissionScreen.js": [
+    "test:id/need-help",
+    "test:id/permission-skip",
+    "test:id/close-tutorial-button"
+  ],
+  "src\\screens\\HabitSettingScreen\\components\\HabitNameInput.js": ["test:id/habit-name"],
+  "src\\screens\\OnBoarding\\HabitPack.js": ["test:id/habit-pack-skip-button"],
+  "src\\screens\\HabitSettingScreen\\HabitSettingScreen.js": ["test:id/delete-habit", "test:id/confirm-edit-habit"],
+  "src\\screens\\AppUsage\\components\\HealthStats.tsx": [
+    "test:id/healthstats-request-health-permission",
+    "test:id/healthstats-request-physical-permission",
+    "test:id/healthstats-toggle-header"
+  ],
+  "src\\screens\\Home\\components\\HomeHeader.tsx": ["test:id/home-header-bearsona", "test:id/home-header-help"],
+  "src\\screens\\UnicaesEndOfStudy\\index.tsx": [
+    "test:id/start-flanker-game",
+    "test:id/start-questionnaire",
+    "test:id/continue-button"
+  ],
+  "src\\screens\\UnicaesStudyOnboarding\\index.tsx": [
+    "test:id/setup-permissions",
+    "test:id/start-flanker-game",
+    "test:id/start-questionnaire",
+    "test:id/continue-button"
+  ],
+  "src\\components\\LogQuantityModal.js": ["test:id/enter-log-quantity-via-textinput"],
+  "src\\screens\\AppUsage\\components\\NoPermissionComponent.tsx": ["test:id/no-permission-grant-button"],
+  "src\\screens\\ToDos\\Components\\OcrTodoModal.tsx": ["test:id/ocr-capture-button"],
+  "src\\screens\\Home\\components\\OnboardingProgressBar.js": ["test:id/onboarding-progress-bar"],
+  "src\\navigation\\AppLauncher\\components\\OpenAppMenuButton\\OpenAppMenuButton.js": ["test:id/open-app-menu-button"],
+  "src\\screens\\DataCollection\\ParticipantCode.tsx": [
+    "test:id/apply-for-participation",
+    "test:id/has-participant-code",
+    "test:id/exit-unicaes",
+    "test:id/has-participant-code-continue-button",
+    "test:id/has-participant-code-back-button"
+  ],
+  "src\\screens\\OnBoarding\\PermissionExplanationScreen.js": ["test:id/learn-more"],
+  "src\\screens\\DataCollection\\PermissionRequest.tsx": ["test:id/continue-permission-button"],
+  "src\\modals\\PostponeModal.js": [
+    "test:id/postpone-indefinite",
+    "test:id/postpone-cancel",
+    "test:id/postpone-back",
+    "test:id/postpone-confirm",
+    "test:id/postpone-do-habits",
+    "test:id/enter-reason-for-deactivation",
+    "test:id/postpone-deactivate-confirm"
+  ],
+  "src\\screens\\PushNotificationPermission\\PushNotificationPermission.js": ["test:id/push-notification-image-press"],
+  "src\\screens\\ToDos\\Components\\QuickActionsBar.js": [
+    "test:id/quickaction-mic",
+    "test:id/quickaction-ocr",
+    "test:id/quickaction-upload",
+    "test:id/quickaction-record",
+    "test:id/quickaction-cancel"
+  ],
+  "src\\screens\\Home\\components\\QuickAddHabitButton.js": ["test:id/quick-add-habit-button"],
+  "src\\screens\\Home\\components\\RoutineActionButtons.js": [
+    "test:id/start-routine-for-new-user",
+    "test:id/start-routine"
+  ],
+  "src\\screens\\Home\\components\\RoutineActivities.js": [
+    "test:id/setup-habits-button",
+    "test:id/customize-habits-button"
+  ],
+  "src\\screens\\RoutineSuggestion\\components\\RoutineActivityList.tsx": [
+    "test:id/edit-activity-button",
+    "test:id/delete-activity-button"
+  ],
+  "src\\screens\\Home\\components\\OverviewTab\\RoutineCard.tsx": ["test:id/routine-card-view-all"],
+  "src\\screens\\BlockingSchedule\\components\\ScheduleTimePickerCard.js": ["test:id/schedule-time-picker-done"],
+  "src\\screens\\BlockingSchedule\\components\\ScheduleTimePickerGroup.tsx": [
+    "test:id/schedule-start-time",
+    "test:id/schedule-end-time"
+  ],
+  "src\\screens\\Settings\\Settings.js": ["test:id/bearsona-settings-button", "test:id/edit-nickname-button"],
+  "src\\screens\\SignIn\\SignIn.js": [
+    "test:id/email",
+    "test:id/password",
+    "test:id/forgot-password",
+    "test:id/dont-have-account"
+  ],
+  "src\\screens\\SignUp\\Signup.js": [
+    "test:id/agree-terms",
+    "test:id/sign-up-with-email",
+    "test:id/enable-guest-mode",
+    "test:id/email",
+    "test:id/password",
+    "test:id/back-to-signup",
+    "test:id/already-have-account"
+  ],
+  "src\\screens\\SimpleHome\\SimpleHome.js": [
+    "test:id/setup-blocking-app",
+    "test:id/setup-notif-app",
+    "test:id/setup-blocking-url",
+    "test:id/start-focus-session",
+    "test:id/start-micro-break",
+    "test:id/continue-or-do-it-later"
+  ],
+  "src\\screens\\OnBoarding\\SimplifiedSchedule.js": [
+    "test:id/no-thanks-simplified-schedule",
+    "test:id/yes-simplified-schedule"
+  ],
+  "src\\screens\\Complete\\SkippedScreen.js": ["test:id/already-did-activity", "test:id/cannot-do-activity"],
+  "src\\screens\\FocusMode\\StartFocusing.js": ["test:id/enter-an-intention"],
+  "src\\screens\\AppUsage\\components\\Stats.tsx": [
+    "test:id/low-quality-screen-time-button",
+    "test:id/high-quality-screen-time-button"
+  ],
+  "src\\screens\\Subscription\\Subscription.js": [
+    "test:id/upgrade-subscription",
+    "test:id/subscribe-now",
+    "test:id/restore-purchases"
+  ],
+  "src\\navigation\\TabNavigator.tsx": [
+    "test:id/home-tab",
+    "test:id/focus-tab",
+    "test:id/app-usage-tab",
+    "test:id/launcher-tab",
+    "test:id/settings-tab"
+  ],
+  "src\\modals\\TaskModal.js": [
+    "test:id/task-toggle-complete",
+    "test:id/task-complete-checkbox",
+    "test:id/subtask-add-checkbox",
+    "test:id/subtask-add-pressable",
+    "test:id/delete-task"
+  ],
+  "src\\components\\TextField.tsx": ["test:id/clear-text", "test:id/toggle-password-visibility"],
+  "src\\components\\TimeCountDown.js": ["test:id/edit-focus-duration"],
+  "src\\screens\\RoutineDetail\\components\\TimerComponent.js": [
+    "test:id/rotate-screen-habit",
+    "test:id/pause-play-habit",
+    "test:id/skip-habit"
+  ],
+  "src\\screens\\OnBoarding\\TimeSetup.js": ["test:id/curfew-no"],
+  "src\\screens\\Home\\components\\OverviewTab\\TodoCard.tsx": ["test:id/todo-card-view-all"],
+  "src\\screens\\ToDos\\ToDosScreen.js": ["test:id/todos-search-button", "test:id/todos-options-button"],
+  "src\\screens\\AppUsage\\components\\UsageAfterCutOffModal.tsx": [
+    "test:id/dont-show-again-touchable",
+    "test:id/dont-show-again-checkbox"
+  ],
+  "src\\screens\\OnBoarding\\UserAchievementGoals.js": [
+    "test:id/goal-boost-productivity",
+    "test:id/goal-improve-mental-health",
+    "test:id/goal-improve-physical-health",
+    "test:id/goal-manage-task",
+    "test:id/goal-strengthen-relationship",
+    "test:id/goal-other-specify",
+    "test:id/goal-other-input"
+  ],
+  "src\\modals\\VerifyPasswordModal.js": ["test:id/verify-password-input"],
+  "src\\screens\\HabitSettingScreen\\components\\VideoUrlInput.js": ["test:id/video-url"],
+  "src\\screens\\OnBoarding\\Welcome.js": ["test:id/start-onboarding", "test:id/already-have-account"]
+}

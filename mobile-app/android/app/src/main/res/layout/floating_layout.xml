@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5sp"
+    app:cardBackgroundColor="@color/floating_view_background"
+    app:cardCornerRadius="12sp">
+
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="6sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="4sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/window_close_alert"
+                    android:layout_width="16dp"
+                    android:layout_weight="1"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/splash_image2" />
+                <ImageView
+                    android:id="@+id/close"
+                    android:tint="@color/alert_text"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="3dp"
+                    android:src="@drawable/close" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityNameTextView"
+                android:textColor="@color/floating_view_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="finished"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:textColor="@color/floating_view_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="00:00"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/pause_blocking_btn"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/roundedclosebutton"
+                android:textAllCaps="false"
+                android:textColor="@color/blocked_text"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

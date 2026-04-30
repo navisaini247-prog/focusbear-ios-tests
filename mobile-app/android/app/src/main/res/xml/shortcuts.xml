@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="start_focus_session"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_start_focus_short"
+        android:shortcutLongLabel="@string/shortcut_start_focus_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled_message">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.focusbear"
+            android:targetClass="com.focusbear.MainActivity"
+            android:data="focusbear://home?action=start-focus-session" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="start_next_habit"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_start_habit_short"
+        android:shortcutLongLabel="@string/shortcut_start_habit_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled_message">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.focusbear"
+            android:targetClass="com.focusbear.MainActivity"
+            android:data="focusbear://home?action=start-routine" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="add_task"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_add_task_short"
+        android:shortcutLongLabel="@string/shortcut_add_task_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled_message">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.focusbear"
+            android:targetClass="com.focusbear.MainActivity"
+            android:data="focusbear://home?action=add-task" />
+    </shortcut>
+
+    <capability android:name="actions.intent.START_EXERCISE">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.focusbear"
+            android:targetClass="com.focusbear.MainActivity"
+            android:data="focusbear://home?action=start-focus-session">
+            <parameter
+                android:name="exercise.name"
+                android:key="intention" />
+            <parameter
+                android:name="exercise.duration"
+                android:key="duration" />
+        </intent>
+    </capability>
+</shortcuts>

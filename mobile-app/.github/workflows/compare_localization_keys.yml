@@ -1,0 +1,19 @@
+name: Compare Localization Keys
+
+on: [push]
+
+jobs:
+  compare_keys:
+    name: Compare Localization Keys
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Compare keys to English (es, de, ja, vi, zh-CN, zh-TW)
+        run: node scripts/check-translation-keys.js

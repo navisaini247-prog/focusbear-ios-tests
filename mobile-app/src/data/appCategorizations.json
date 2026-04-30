@@ -1,0 +1,2320 @@
+{
+  "apps": [
+    {
+      "packageName": "air.com.hypah.io.slither",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "air.com.lunime.gachalife",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "app.source.getcontact",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "br.com.bb.android",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "br.com.brainweb.ifood",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "br.com.gabba.Caixa",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "br.gov.caixa.tem",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "br.gov.meugovbr",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "br.gov.serpro.cnhe",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "cn.wps.moffice_eng",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "cn.xender",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "co.brainly",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.accuweather.android",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.activision.callofduty.shooter",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.adidas.app",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.adobe.lrmobile",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.adobe.psmobile",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.adobe.reader",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.adobe.scan.android",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.agoda.mobile.consumer",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.aim.racing",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.airbnb.android",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.alibaba.aliexpresshd",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.alibaba.intl.android.apps.poseidon",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.amanotes.beathopper",
+      "category": "GAME_MUSIC"
+    },
+    {
+      "packageName": "com.amazon.avod.thirdpartyclient",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.amazon.dee.app",
+      "category": "LIFESTYLE"
+    },
+    {
+      "packageName": "com.amazon.kindle",
+      "category": "BOOKS_AND_REFERENCE"
+    },
+    {
+      "packageName": "com.amazon.mp3",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.amazon.mShop.android.shopping",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.americanexpress.android.acctsvcs.us",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.android.chrome",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.ansangha.drdriving",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.antivirus",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.anydo",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.apple.android.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.application.zomato",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.apps.MyXL",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.appsomniacs.da2",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.apusapps.launcher",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.asana.app",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.asos.app",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.audiomack",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.avast.android.mobilesecurity",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.avira.android",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.aws.android",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.axis.net",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.axlebolt.standoff2",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.babbel.mobile.android.en",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.badoo.mobile",
+      "category": "DATING"
+    },
+    {
+      "packageName": "com.bancomer.mbanking",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.bbk.theme",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.bestbuy.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.biglime.cookingmadness",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.bigwinepot.nwdn.international",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.billiards.city.pool.nation.club",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.binance.dev",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.bitstrips.imoji",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.block.juggle",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "com.booking",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.box.android",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.bradesco",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.brave.browser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.bsbportal.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.busuu.android.enc",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.calm.android",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.camerasideas.instashot",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.camerasideas.trimmer",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.canva.editor",
+      "category": "ART_AND_DESIGN"
+    },
+    {
+      "packageName": "com.chase.sig.android",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.citi.citimobile",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.cnn.mobile.android.phone",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.coinbase.android",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.coloros.alarmclock",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.coloros.filemanager",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.coloros.gallery3d",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.coloros.phonemanager",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.coloros.scenemode",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.coloros.video",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.coloros.weather.service",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.coloros.weather2",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.commsource.beautyplus",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.contextlogic.wish",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.craftsman.go",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.creditkarma.mobile",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.crunchyroll.crunchyroid",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.csam.icici.bank.imobile",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.cyberlink.powerdirector.DRA140225_01",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.cyberlink.youcammakeup",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.daraz.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.dashlane",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.dd.doordash",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.deliveroo.orderapp",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.devuni.flashlight",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.digidust.elokence.akinator.freemium",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.discord",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.disney.disneyplus",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.dream11.fantasy.cricket.football.kabaddi",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.dreamgames.royalmatch",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "com.dropbox.android",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.dsi.ant.plugins.antplus",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.dsi.ant.service.socket",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.dts.freefiremax",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.dts.freefireth",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.dubox.drive",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.duckduckgo.mobile.android",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.duolingo",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.dvloper.granny",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.dywx.larkplayer",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.ea.game.nfs14_row",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.ea.game.pvz2_row",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.ea.game.pvzfree_row",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.ea.game.simcitymobile_row",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.ea.games.r3_row",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.ea.games.simsfreeplay_row",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.ea.gp.fifamobile",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.ebay.mobile",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.einnovation.temu",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.episodeinteractive.android.catalog",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.etermax.preguntados.lite",
+      "category": "GAME_TRIVIA"
+    },
+    {
+      "packageName": "com.etrade.mobilepro.activity",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.etsy.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.evernote",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.expedia.bookings",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.facebook.katana",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.facebook.lite",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.facebook.orca",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.facebook.pages.app",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.fdgentertainment.bananakong",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.FDGEntertainment.redball4.gp",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.fgol.HungrySharkEvolution",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.fidelity.android",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.fingersoft.hcr2",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.fingersoft.hillclimb",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.firsttouchgames.dls7",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.firsttouchgames.story",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.fitbit.FitbitMobile",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.flipkart.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.flipkart.shopsy",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.fluffyfairygames.idleminertycoon",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.ForgeGames.SpecialForcesGroup2",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.frontrow.vlog",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.fugo.wow",
+      "category": "GAME_WORD"
+    },
+    {
+      "packageName": "com.fungames.sniper3d",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.gaana",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.gamedevltd.wwh",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.gameloft.android.ANMP.GloftA8HM",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.gameloft.android.ANMP.GloftA9HM",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.gameloft.android.ANMP.GloftDMHM",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.gameloft.android.ANMP.GloftGGHM",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.gameloft.android.ANMP.GloftM5HM",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.gamma.scan",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.garena.game.kgvn",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.gau.go.launcherex",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.global.foodpanda.android",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.gojek.app",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.google.android.accessibility.switchaccess",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.accessibility.voiceaccess",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.adm",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.assistant",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.bard",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.books",
+      "category": "BOOKS_AND_REFERENCE"
+    },
+    {
+      "packageName": "com.google.android.apps.chromecast.app",
+      "category": "LIFESTYLE"
+    },
+    {
+      "packageName": "com.google.android.apps.docs",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.docs.editors.docs",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.docs.editors.sheets",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.docs.editors.slides",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.googleassistant",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.healthdata",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.google.android.apps.kids.familylink",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.magazines",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.google.android.apps.maps",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.google.android.apps.mapslite",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.google.android.apps.messaging",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.apps.nbu.files",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.nbu.paisa.user",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.google.android.apps.paidtasks",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.photos",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.google.android.apps.photosgo",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.google.android.apps.restore",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.searchlite",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.subscriptions.red",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.apps.tachyon",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.apps.translate",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.walletnfcrel",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.google.android.apps.wallpaper",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.google.android.apps.weather",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.google.android.apps.wellbeing",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.apps.youtube.kids",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.google.android.apps.youtube.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.google.android.as",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.as.oss",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.calculator",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.calendar",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.contacts",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.deskclock",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.dialer",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.gm",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.gm.lite",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.gms",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.googlequicksearchbox",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.ims",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.android.inputmethod.latin",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.keep",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.google.android.marvin.talkback",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.google.android.play.games",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.google.android.projection.gearhead",
+      "category": "AUTO_AND_VEHICLES"
+    },
+    {
+      "packageName": "com.google.android.tts",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.videos",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.google.android.webview",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.android.youtube",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.google.ar.core",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.ar.lens",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.google.audio.hearing.visualization.accessibility.scribe",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.google.earth",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.grabtaxi.passenger",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.grofers.customerapp",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.groupon",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.grubhub.android",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.h8games.helixjump",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.habitrpg.android.habitica",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.halfbrick.fruitninjafree",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.halfbrick.jetpackjoyride",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.halo.wifikey.wifilocating",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.heytap.browser",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.heytap.pictorial",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.heytap.themestore",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.hp.android.printservice",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.hulu.plus",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.igg.android.lordsmobile",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.igg.castleclash",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.imangi.templerun",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.imangi.templerun2",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.imo.android.imoim",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.indeed.android.jobsearch",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.innersloth.spacemafia",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.instabridge.android",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.instacart.shopper",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.instagram.android",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.instagram.lite",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.intsig.camscanner",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.ismaker.android.simsimi",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.itau",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.ixigo.train.ixitrain",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.jio.jioplay.tv",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.jio.media.jiobeats",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.jio.myjio",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.joeware.android.gpulumera",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.joom",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.jrzheng.supervpnfree",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.kabam.marvelbattle",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.kakao.talk",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.kayak.android",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.kiloo.subwaysurf",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.king.candycrushsaga",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.king.candycrushsodasaga",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.king.farmheroessaga",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.king.petrescuesaga",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.kitkagames.fallbuddies",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.kwai.bulldog",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.kwai.video",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.lastpass.lpandroid",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.lazada.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.lbe.parallel.intl",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.lemon.lvoverseas",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.lenovo.anyshare.gps",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.linecorp.b612.android",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.linkedin.android",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.lockwoodpublishing.avakinlife",
+      "category": "GAME_ROLE_PLAYING"
+    },
+    {
+      "packageName": "com.lowes.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.ludo.king",
+      "category": "GAME_BOARD"
+    },
+    {
+      "packageName": "com.magisto",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.maleo.bussimulatorid",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.mapmyfitness.android2",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.mapmyrun.android2",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.mediocre.smashhit",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.medium.reader",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.meesho.supply",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.melesta.coffeeshop",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.memrise.android.memrisecompanion",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.mercadolibre",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.mercadopago.wallet",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.mi.android.globalFileexplorer",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.mi.android.globalminusscreen",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.mi.globalbrowser",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.mi.globalminusscreen",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.microblink.photomath",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.microsoft.appmanager",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.excel",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.officehubrow",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.onenote",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.outlook",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.powerpoint",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.office.word",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.skydrive",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.microsoft.teams",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.microsoft.todos",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.miHoYo.GenshinImpact",
+      "category": "GAME_ADVENTURE"
+    },
+    {
+      "packageName": "com.mind.quiz.brain.out",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "com.miniclip.agar.io",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.miniclip.carrom",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.miniclip.eightballpool",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.miniclip.footballstrike",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.miniclip.plagueinc",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "com.miniclip.realsniper",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.miui.calculator",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.miui.cleaner",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.miui.player",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.miui.videoplayer",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.miui.weather2",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.mobikwik_new",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.mobile.legends",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.mojang.minecraftpe",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.mojang.minecrafttrialpe",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.moonactive.coinmaster",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.motorola.actions",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.motorola.ccc.notification",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.motorola.fmplayer",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.motorola.genie",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.motorola.help",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.motorola.moto",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.motorola.motodisplay",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.motorola.timeweatherwidget",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.mventus.selfcare.activity",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.mxtech.videoplayer.ad",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.myairtelapp",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.myfitnesspal.android",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.mygalaxy",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.myntra.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.naturalmotion.customstreetracer2",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.naver.linewebtoon",
+      "category": "COMICS"
+    },
+    {
+      "packageName": "com.nekki.shadowfight",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.nekki.shadowfight3",
+      "category": "GAME_ROLE_PLAYING"
+    },
+    {
+      "packageName": "com.nekki.vector",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.neptune.domino",
+      "category": "GAME_BOARD"
+    },
+    {
+      "packageName": "com.netflix.mediaclient",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.nexstreaming.app.kinemasterfree",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.nextwave.wcc2",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "com.nianticlabs.pokemongo",
+      "category": "GAME_ADVENTURE"
+    },
+    {
+      "packageName": "com.nike.omega",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.nike.plusgps",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.nordcurrent.canteenhd",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.nu.production",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.nytimes.android",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.offline.bible",
+      "category": "BOOKS_AND_REFERENCE"
+    },
+    {
+      "packageName": "com.olacabs.customer",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "com.olx.southasia",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.onepassword.android",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.openai.chatgpt",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.opera.browser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.opera.mini.native",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.oplus.games",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.oplus.melody",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.oplus.themestore",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.oppo.quicksearchbox",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.os.airforce",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.outfit7.herodash",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.outfit7.mytalkingangelafree",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.outfit7.mytalkingtom2",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.outfit7.mytalkingtomfree",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.outfit7.mytalkingtomfriends",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.outfit7.talkingtom",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.outfit7.talkingtom2free",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.outfit7.talkingtomgoldrun",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.pandora.android",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.paypal.android.p2pmobile",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.pazugames.avatarworld",
+      "category": "GAME_ROLE_PLAYING"
+    },
+    {
+      "packageName": "com.phonepe.app",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.photoroom.app",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.picsart.studio",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.pinterest",
+      "category": "LIFESTYLE"
+    },
+    {
+      "packageName": "com.pixel.art.coloring.color.number",
+      "category": "GAME_BOARD"
+    },
+    {
+      "packageName": "com.pixel.gun3d",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.pixonic.wwr",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.playgendary.kickthebuddy",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.playit.videoplayer",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.playrix.fishdomdd.gplay",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "com.playrix.gardenscapes",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.playrix.homescapes",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.playrix.township",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.plexapp.android",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.policydm",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.popularapp.periodcalendar",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.prettysimple.criminalcaseandroid",
+      "category": "GAME_ADVENTURE"
+    },
+    {
+      "packageName": "com.priceline.android.negotiator",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.psafe.msuite",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.pubg.imobile",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.pure.indosat.care",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.quicinc.voice.activation",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.quizlet.quizletandroid",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.quvideo.xiaoying",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.radio.pocketfm",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.rapido.passenger",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "com.reddit.frontpage",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.ril.ajio",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.rioo.runnersubway",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.robinhood.android",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.roblox.client",
+      "category": "GAME_ADVENTURE"
+    },
+    {
+      "packageName": "com.robtopx.geometryjumplite",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.rovio.baba",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.rsupport.mvagent",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.rubygames.assassin",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.runtastic.android",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.samsung.android.app.notes",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.samsung.android.app.watchmanager",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.samsung.android.appseparation",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.samsung.android.calendar",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.samsung.android.email.provider",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.samsung.android.lool",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.samsung.android.oneconnect",
+      "category": "LIFESTYLE"
+    },
+    {
+      "packageName": "com.samsung.android.uds",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.samsung.android.voc",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.samsung.memorysaver",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.samsung.sree",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.santander.app",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.schwab.mobile",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.sec.android.app.clockpackage",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.sec.android.app.launcher",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.sec.android.app.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.sec.android.app.myfiles",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.sec.android.app.popupcalculator",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.sec.android.app.sbrowser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.sec.android.app.shealth",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.sec.android.app.voicenote",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.sec.android.easyMover",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.sec.app.samsungprintservice",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.sec.pcw",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.sec.spp.push",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.sega.sonicdash",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "com.sgiggle.production",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.shazam.android",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.shopee.br",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.shopee.id",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.shopee.ph",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.shopify.arrive",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.sirma.mobile.bible.android",
+      "category": "BOOKS_AND_REFERENCE"
+    },
+    {
+      "packageName": "com.skgames.trafficracer",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.skgames.trafficrider",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.smule.singandroid",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.snapchat.android",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.socialnmobile.dictapps.notepad.color.note",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.soundcloud.android",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.spotify.music",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.squareup.cash",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.ss.android.ugc.trill",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.starmakerinteractive.starmaker",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.storymatrix.drama",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.strava",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.supercell.boombeach",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.supercell.brawlstars",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.supercell.clashofclans",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.supercell.clashroyale",
+      "category": "GAME_STRATEGY"
+    },
+    {
+      "packageName": "com.supercell.hayday",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "com.superking.parchisi.star",
+      "category": "GAME_BOARD"
+    },
+    {
+      "packageName": "com.symantec.mobilesecurity",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.talpa.hibrowser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.target.ui",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.taxsee.taxsee",
+      "category": "AUTO_AND_VEHICLES"
+    },
+    {
+      "packageName": "com.teacapps.barcodescanner",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.telkomsel.telkomselcm",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.tencent.ibg.joox",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "com.tencent.ig",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.tencent.iglite",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.tencent.mm",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.tinder",
+      "category": "DATING"
+    },
+    {
+      "packageName": "com.tocaboca.tocalifeworld",
+      "category": "GAME_EDUCATIONAL"
+    },
+    {
+      "packageName": "com.todoist",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.tokopedia.tkpd",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.topfreegames.bikeracefreeworld",
+      "category": "GAME_RACING"
+    },
+    {
+      "packageName": "com.touchtype.swiftkey",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.transsion.carlcare",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.transsion.filemanagerx",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.transsion.hilauncher",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.transsion.magicshow",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.transsion.notebook",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.transsion.phoenix",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.transsion.tecnospot",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.transsion.XOSLauncher",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "com.trassion.infinix.xclub",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.trello",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.tripadvisor.tripadvisor",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.truecaller",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.tumblr",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.twitter.android",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.ubercab",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "com.ubercab.driver",
+      "category": "BUSINESS"
+    },
+    {
+      "packageName": "com.ubercab.eats",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.uc.browser.en",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.UCMobile.intl",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.udemy.android",
+      "category": "EDUCATION"
+    },
+    {
+      "packageName": "com.unicostudio.braintest",
+      "category": "GAME_TRIVIA"
+    },
+    {
+      "packageName": "com.utorrent.client",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.venmo",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "com.venticake.retrica",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "com.viber.voip",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.vitastudio.mahjong",
+      "category": "GAME_BOARD"
+    },
+    {
+      "packageName": "com.vivaldi.browser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.vivo.browser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.vivo.easyshare",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.vivo.website",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.vkontakte.android",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.walmart.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.washingtonpost.android",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "com.wayfair.wayfair",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.waze",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "com.wb.goog.mkx",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.wbd.stream",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "com.weather.Weather",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.wego.android",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.whatsapp",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "com.whatsapp.w4b",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.whereismytrain.android",
+      "category": "TRAVEL_AND_LOCAL"
+    },
+    {
+      "packageName": "com.wildberries.ru",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.wildspike.wormszone",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.xiaomi.midrop",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "com.xvideostudio.videoeditor",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "com.yahoo.mobile.client.android.mail",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "com.yahoo.mobile.client.android.weather",
+      "category": "WEATHER"
+    },
+    {
+      "packageName": "com.yodo1.crossyroad",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "com.youmusic.magictiles",
+      "category": "GAME_MUSIC"
+    },
+    {
+      "packageName": "com.yy.hiyo",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.zappos.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "com.zaz.translate",
+      "category": "PRODUCTIVITY"
+    },
+    {
+      "packageName": "com.zeptoconsumerapp",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "com.zhiliaoapp.musically",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.zhiliaoapp.musically.go",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "com.zwift.zwiftgame",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "com.zzkko",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "deezer.android.app",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "ee.mtakso.client",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "es.socialpoint.DragonCity",
+      "category": "GAME_SIMULATION"
+    },
+    {
+      "packageName": "eu.nordeus.topeleven.android",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "fb.video.downloader",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "flipboard.app",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "flipboard.boxer.app",
+      "category": "NEWS_AND_MAGAZINES"
+    },
+    {
+      "packageName": "free.tube.premium.advanced.tuber",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "free.vpn.unblock.proxy.turbovpn",
+      "category": "TOOLS"
+    },
+    {
+      "packageName": "happy.pixel.coloring.art.color.games",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "homeworkout.homeworkouts.noequipment",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "id.dana",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "in.amazon.mShop.android.shopping",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "in.mohalla.sharechat",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "in.startv.hotstar",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "in.swiggy.android",
+      "category": "FOOD_AND_DRINK"
+    },
+    {
+      "packageName": "io.faceapp",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "jp.konami.pesam",
+      "category": "GAME_SPORTS"
+    },
+    {
+      "packageName": "jp.naver.line.android",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "me.pou.app",
+      "category": "GAME_CASUAL"
+    },
+    {
+      "packageName": "musicplayer.musicapps.music.mp3player",
+      "category": "MUSIC_AND_AUDIO"
+    },
+    {
+      "packageName": "net.bat.store",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "net.mobigame.zombietsunami",
+      "category": "GAME_ARCADE"
+    },
+    {
+      "packageName": "net.one97.paytm",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "net.peakgames.amy",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "net.peakgames.toonblast",
+      "category": "GAME_PUZZLE"
+    },
+    {
+      "packageName": "net.wargaming.wot.blitz",
+      "category": "GAME_ACTION"
+    },
+    {
+      "packageName": "net.zedge.android",
+      "category": "PERSONALIZATION"
+    },
+    {
+      "packageName": "org.altruist.BajajExperia",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "org.iggymedia.periodtracker",
+      "category": "HEALTH_AND_FITNESS"
+    },
+    {
+      "packageName": "org.mozilla.firefox",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "org.telegram.messenger",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "org.thoughtcrime.securesms",
+      "category": "MESSAGING"
+    },
+    {
+      "packageName": "org.torproject.torbrowser",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "photo.editor.photoeditor.photoeditorpro",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "photoeditor.layout.collagemaker",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "pk.com.telenor.phoenix",
+      "category": "FINANCE"
+    },
+    {
+      "packageName": "ru.mail.mailapp",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "ru.ozon.app.android",
+      "category": "SHOPPING"
+    },
+    {
+      "packageName": "ru.yandex.taxi",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "sg.bigo.live",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "sinet.startup.inDriver",
+      "category": "MAPS_AND_NAVIGATION"
+    },
+    {
+      "packageName": "tv.twitch.android.app",
+      "category": "ENTERTAINMENT"
+    },
+    {
+      "packageName": "us.zoom.videomeetings",
+      "category": "COMMUNICATION"
+    },
+    {
+      "packageName": "video.like",
+      "category": "SOCIAL"
+    },
+    {
+      "packageName": "videoeditor.videorecorder.screenrecorder",
+      "category": "VIDEO_PLAYERS"
+    },
+    {
+      "packageName": "vsin.t16_funny_photo",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "vStudio.Android.Camera360",
+      "category": "PHOTOGRAPHY"
+    },
+    {
+      "packageName": "wp.wattpad",
+      "category": "BOOKS_AND_REFERENCE"
+    },
+    {
+      "packageName": "zombie.survival.craft.z",
+      "category": "GAME_ACTION"
+    }
+  ]
+}

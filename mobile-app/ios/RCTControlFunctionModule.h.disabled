@@ -1,0 +1,24 @@
+//
+//  RCTControlFunctionModule.h
+//  FocusBear
+//
+//  Created by System on Current Date.
+//
+
+#import <Foundation/Foundation.h>
+
+#if __has_include(<NativeControlFunctionModuleSpec/NativeControlFunctionModuleSpec.h>)
+#import <NativeControlFunctionModuleSpec/NativeControlFunctionModuleSpec.h>
+#else
+#import <React/RCTBridgeModule.h>
+@protocol NativeControlFunctionModuleSpec <RCTBridgeModule>
+@end
+#endif
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface RCTControlFunctionModule : NSObject <NativeControlFunctionModuleSpec>
+
+@end
+
+NS_ASSUME_NONNULL_END

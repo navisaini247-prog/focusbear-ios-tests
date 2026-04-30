@@ -1,0 +1,76 @@
+diff --git a/node_modules/rn-tooltip/src/Tooltip.js b/node_modules/rn-tooltip/src/Tooltip.js
+index 0380b12..3f69651 100644
+--- a/node_modules/rn-tooltip/src/Tooltip.js
++++ b/node_modules/rn-tooltip/src/Tooltip.js
+@@ -35,6 +35,8 @@ type Props = {
+   highlightColor: string,
+   toggleWrapperProps: {},
+   actionType: 'press' | 'longPress' | 'none',
++  isVisible?: boolean,
++  setIsVisible?: (visible: boolean) => void,
+ };
+ 
+ class Tooltip extends React.Component<Props, State> {
+@@ -50,15 +52,22 @@ class Tooltip extends React.Component<Props, State> {
+   timeout;
+ 
+   toggleTooltip = () => {
+-    const { onClose } = this.props;
++    const { onClose, setIsVisible } = this.props;
+     this.getElementPosition();
+-    this.setState(prevState => {
+-      if (prevState.isVisible && !isIOS) {
++
++    if (setIsVisible) {
++      setIsVisible(!this.props.isVisible);
++      if (this.props.isVisible && !isIOS) {
+         onClose && onClose();
+       }
+-
+-      return { isVisible: !prevState.isVisible };
+-    });
++    } else {
++      this.setState(prevState => {
++        if (prevState.isVisible && !isIOS) {
++          onClose && onClose();
++        }
++        return { isVisible: !prevState.isVisible };
++      });
++    }
+   };
+ 
+   wrapWithAction = (actionType, children) => {
+@@ -196,6 +205,13 @@ class Tooltip extends React.Component<Props, State> {
+     this.timeout = setTimeout(this.getElementPosition, 500);
+   }
+ 
++  componentDidUpdate(prevProps: Props) {
++    // Recompute anchor position for controlled tooltips when first shown.
++    if (this.props.setIsVisible && this.props.isVisible && !prevProps.isVisible) {
++      this.getElementPosition();
++    }
++  }
++
+   componentWillUnmount() {
+     clearTimeout(this.timeout);
+   }
+@@ -215,7 +231,9 @@ class Tooltip extends React.Component<Props, State> {
+   };
+ 
+   render() {
+-    const { isVisible } = this.state;
++    const { isVisible: propIsVisible, setIsVisible } = this.props;
++    const { isVisible: stateIsVisible } = this.state;
++    const isVisible = setIsVisible ? propIsVisible : stateIsVisible;
+     const { onClose, withOverlay, onOpen, overlayColor } = this.props;
+ 
+     return (
+@@ -259,6 +277,8 @@ Tooltip.propTypes = {
+   backgroundColor: PropTypes.string,
+   highlightColor: PropTypes.string,
+   actionType: PropTypes.oneOf(['press', 'longPress', 'none']),
++  isVisible: PropTypes.bool,
++  setIsVisible: PropTypes.func,
+ };
+ 
+ Tooltip.defaultProps = {

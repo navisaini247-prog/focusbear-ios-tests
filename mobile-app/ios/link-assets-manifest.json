@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Fenwick-Bold.ttf",
+      "sha1": "4f9f45f57935bfb70ebd37cb0feceb4f704bb318"
+    },
+    {
+      "path": "src/assets/fonts/Fenwick-Italic.ttf",
+      "sha1": "3333a2962643a252d88839338dd748ab5535a42f"
+    },
+    {
+      "path": "src/assets/fonts/Fenwick-Light.ttf",
+      "sha1": "72261488f2a7e3c4d03058f17b67e9dab2211788"
+    },
+    {
+      "path": "src/assets/fonts/Fenwick-Regular.ttf",
+      "sha1": "9e76d276c67ebadb9e42e0439e10b3217f294ab8"
+    }
+  ]
+}

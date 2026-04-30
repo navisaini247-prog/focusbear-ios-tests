@@ -1,0 +1,117 @@
+name: iOS Production Build
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published] # only run the workflow when a new release has been published
+
+jobs:
+  ios-build:
+    name: iOS Production Build
+    runs-on: macOS-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Restore node_modules from cache
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
+
+      # - name: Get next version
+      #   uses: reecetech/version-increment@2023.4.1
+      #   id: next_version
+      #   with:
+      #     scheme: semver
+      #     increment: patch
+
+      # - name: Set version in package.json
+      #   run: |
+      #     node -e "const fs = require('fs'); const pkg = require('./package.json'); pkg.version = '${{ steps.next_version.outputs.version }}'; fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2));"
+      #     echo "New version is: ${{ steps.next_version.outputs.version }}"
+
+      - name: Setup Ruby (bundle)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Restore Pods cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Install Pods
+        run: cd ios && pod install --repo-update && cd ..
+
+      - name: Bundle React Native code for iOS
+        run: |
+          npx react-native bundle \
+            --entry-file index.js \
+            --platform ios \
+            --dev false \
+            --bundle-output ios/main.jsbundle \
+            --assets-dest ios \
+            --reset-cache
+
+      # - name: Set iOS version
+      #   run: |
+      #     cd ios
+      #     /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ steps.next_version.outputs.version }}" FocusBear/Info.plist
+      #     /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ steps.next_version.outputs.version }}" FocusBear/Info.plist
+      #     cd ..
+
+      - name: Build iOS App
+        uses: yukiarrr/ios-build-action@v1.4.0
+        with:
+          project-path: ios/FocusBear.xcodeproj
+          p12-base64: ${{ secrets.IOS_P12_BASE64 }}
+          mobileprovision-base64: ${{ secrets.IOS_MOBILE_PROVISION_BASE64 }}
+          code-signing-identity: "iPhone Distribution"
+          team-id: ${{ secrets.IOS_TEAM_ID }}
+          certificate-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          workspace-path: ios/FocusBear.xcworkspace
+          scheme: Development
+          export-options: app-store
+          output-path: output.ipa
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-${{ steps.next_version.outputs.version }}
+          path: output.ipa
+          retention-days: 30
+
+      - name: Display build info
+        run: |
+          echo "✅ iOS build completed successfully!"
+          echo "📱 Version: ${{ steps.next_version.outputs.version }}"
+          echo "📦 Build artifact: output.ipa"
+          echo "🚫 Upload to TestFlight skipped as requested"

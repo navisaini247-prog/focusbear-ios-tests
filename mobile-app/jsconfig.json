@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["src/*"],
+      "react": ["./node_modules/@types/react"]
+    }
+  }
+}

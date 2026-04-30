@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Focus Bear</string>
+    <string name="start_routine">Start Routine</string>
+    <string name="start">Start</string>
+    <string name="finished">finished</string>
+    <string name="finishedCapital">Finished</string>
+    <string name="next">Next</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
+    <string name="skipped">Skipped</string>
+    <string name="didIt">I already did it</string>
+    <string name="canDoIT">Can\'t do it today</string>
+    <string name="routine">Routine has been postponed</string>
+    <string name="_00_00">00:00</string>
+    <string name="routinePostPond">Routine has been postponed\nResume routine?</string>
+</resources>

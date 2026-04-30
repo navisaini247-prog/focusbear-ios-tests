@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+.envmobile-app/android/app/google-services.json
+mobile-app/ios/GoogleService-Info.plist
+mobile-app/android/app/google-services.json
+mobile-app/ios/GoogleService-Info.plist
+.env
+.env.*
+node_modules/
+mobile-app/node_modules/

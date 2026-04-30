@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.focusbear'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.focusbear"
+        minSdk 26
+        targetSdk 34
+        versionCode 1003910
+        versionName "1.16.0"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('FOCUSBEAR_UPLOAD_STORE_FILE')) {
+                storeFile file(FOCUSBEAR_UPLOAD_STORE_FILE)
+                storePassword FOCUSBEAR_UPLOAD_STORE_PASSWORD
+                keyAlias FOCUSBEAR_UPLOAD_KEY_ALIAS
+                keyPassword FOCUSBEAR_UPLOAD_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-wearable:18.0.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation "androidx.wear:wear:1.3.0"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    compileOnly 'com.google.android.wearable:wearable:2.9.0'
+    implementation "androidx.wear:wear-input:1.1.0"
+}

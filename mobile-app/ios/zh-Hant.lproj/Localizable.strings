@@ -1,0 +1,58 @@
+"shield_subtitle" = "您無法使用 %@ 因為您使用 Focus Bear 封鎖了它";
+"shield_title" = "被 Focus Bear 限制";
+
+"blocked_apps" = "已封鎖的應用";
+"blocked_categories" = "已封鎖的類別";
+"blocked_webdomains" = "已封鎖的網站";
+
+"apps_to_block" = "要封鎖的應用: ";
+"start" = "開始";
+"pause" = "暫停";
+"resume" = "恢復";
+"next" = "下一個";
+"skipped" = "已跳過";
+"finished" = "完成!";
+"done" = "完成";
+"why_do_you_want_to_skip" = "您為什麼要跳過?";
+"start_routine" = "開始例行";
+"routine_has_been_postponed_resume_routine" = "例行已被延遲\n 恢復例行?";
+"i_already_did_it" = "我已經做了";
+"cant_do_it_today" = "今天無法做";
+"continue_on_your_phone" = "在您的手機上繼續";
+"open_focusbear" = "開啟 Focus Bear";
+"tap_to_return_app" = "點擊返回應用";
+"close" = "關閉";
+"whats_next" = "接下來是什麼:";
+"its_time_to_focus" = "是時候專注了";
+"updated"= "已更新";
+"start_a_focus_session" = "開始專注會話";
+
+"blockedMessage1" = "哎呀，現在不行";
+"blockedMessage2" = "您確定需要這個嗎?";
+"blockedMessage3" = "保持您的專注鎖定";
+
+"motivationalMessage1" = "\"成功是小努力的總和，一天又一天地重複。\" – Robert Collier";
+"motivationalMessage2" = "\"領先的祕訣是開始。\" – Mark Twain";
+"motivationalMessage3" = "\"紀律是在你現在想要的和你最想要的之間選擇。\" – Abraham Lincoln";
+"motivationalMessage4" = "\"你的未來是由你今天做的事情創造的，而不是明天。\" – Robert Kiyosaki";
+"motivationalMessage5" = "\"它總是看起來不可能，直到它完成。\" – Nelson Mandela";
+
+/* Soft blocking feature */
+"block_app" = "阻止它";
+"unlock_for_mins_secs" = "解鎖 %d 分 %d 秒";
+"unlock_for_mins" = "解鎖 %d 分鐘";
+"unlock_for_secs" = "解鎖 %d 秒";
+"waiting_to_unlock" = "等待解鎖";
+"waiting" = "等待中...";
+"waiting_countdown" = "等待 %d 秒..."; 
+"unlocking_title" = "請耐心等待...";
+"unlock_delay_message" = "請在應用解鎖前等待 %d 秒";
+"processing_unlock" = "正在處理解鎖...";
+"unlock_period_ending" = "解鎖期間結束";
+"blocking_will_resume" = "應用封鎖將很快恢復";
+
+"exponential_delay_note" = "每次解鎖等待時間加倍。保持專注——這個暫停是為了幫助你。你可以在封鎖排程設定中自訂基礎等待時間和解鎖時長！";
+
+/* Blocking schedule shield reason */
+"blocking_enabled_by_schedule" = "您的封鎖排程 %@ 正在啟用";
+"blocked_globally" = "此應用程式已被全域封鎖";

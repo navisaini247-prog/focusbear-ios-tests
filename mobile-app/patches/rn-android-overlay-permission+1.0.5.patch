@@ -1,0 +1,35 @@
+diff --git a/node_modules/rn-android-overlay-permission/android/build.gradle b/node_modules/rn-android-overlay-permission/android/build.gradle
+index b094593..bd3fef2 100644
+--- a/node_modules/rn-android-overlay-permission/android/build.gradle
++++ b/node_modules/rn-android-overlay-permission/android/build.gradle
+@@ -1,18 +1,19 @@
+ buildscript {
+     repositories {
+-        jcenter()
++        google()
++        mavenCentral()
+     }
+ 
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:2.2.2'
++        classpath 'com.android.tools.build:gradle:7.2.2'
+     }
+ }
+ 
+ apply plugin: 'com.android.library'
+ 
+ android {
+-    compileSdkVersion 28
+-    buildToolsVersion "28.0.3"
++    compileSdkVersion 34
++    buildToolsVersion "30.0.3"
+ 
+     defaultConfig {
+         minSdkVersion 21
+@@ -30,5 +31,5 @@ repositories {
+ }
+ 
+ dependencies {
+-    compile 'com.facebook.react:react-native:+'
++    implementation 'com.facebook.react:react-native:+'
+ }

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "sourceMap": false,
+        "target": "esnext",
+        "module": "commonjs",
+        "removeComments": true,
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "strictPropertyInitialization": true,
+        "strictNullChecks": true,
+        "allowJs": true,
+        "types": [
+            "@types/jest",
+            "@wdio/globals/types",
+            "expect-webdriverio",
+            "node",
+            "@wdio/jasmine-framework",
+            "@wdio/appium-service"
+        ]
+    },
+    "include": [
+        "./config/**/*.ts",
+        "./tests/**/*.ts"
+    ]
+}

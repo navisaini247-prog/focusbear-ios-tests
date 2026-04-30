@@ -1,0 +1,292 @@
+//
+//  RCTControlFunctionModule.mm
+//  FocusBear
+//
+//  Created by System on Current Date.
+//
+
+#import "RCTControlFunctionModule.h"
+#import "FocusBear-Swift.h"
+#import <React/RCTBridge.h>
+
+@interface RCTControlFunctionModule ()
+@property(strong, nonatomic) ControlFunction *controlFunction;
+@property(weak, nonatomic) RCTBridge *bridge;
+@end
+
+@implementation RCTControlFunctionModule
+
+- (id)init {
+  if (self = [super init]) {
+    _controlFunction = [[ControlFunction alloc] init];
+  }
+  return self;
+}
+
+- (void)setBridge:(RCTBridge *)bridge {
+  _bridge = bridge;
+  self.controlFunction.bridge = bridge;
+}
+
+- (void)addListener:(NSString *)eventName {
+  [self.controlFunction addListener:eventName];
+}
+
+- (void)removeListeners:(double)count {
+  [self.controlFunction removeListeners:count];
+}
+
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params {
+  return std::make_shared<facebook::react::NativeControlFunctionModuleSpecJSI>(
+      params);
+}
+
+// MARK: - App selection and permissions
+
+- (void)selectApps {
+  [self.controlFunction selectApps];
+}
+
+- (void)selectAppsForSchedule:(NSString *)scheduleId {
+  [self.controlFunction selectAppsForSchedule:scheduleId];
+}
+
+- (void)storeCurrentSelection {
+  [self.controlFunction storeCurrentSelection];
+}
+
+- (void)commitSelectionForSchedule:(NSString *)scheduleId
+                           resolve:(RCTPromiseResolveBlock)resolve
+                            reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction commitSelectionForSchedule:scheduleId
+                                           resolve:resolve
+                                            reject:reject];
+}
+
+- (void)setBlockingSchedules:(NSString *)payload
+                     resolve:(RCTPromiseResolveBlock)resolve
+                      reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction setBlockingSchedules:payload
+                                     resolve:resolve
+                                      reject:reject];
+}
+
+- (void)setHabitBlockingWindows:(NSString *)payload
+                        resolve:(RCTPromiseResolveBlock)resolve
+                         reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction setHabitBlockingWindows:payload
+                                        resolve:resolve
+                                         reject:reject];
+}
+
+- (void)assignStoredSelectionToSchedule:(NSString *)scheduleId
+                                resolve:(RCTPromiseResolveBlock)resolve
+                                 reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction assignStoredSelectionToSchedule:scheduleId
+                                                resolve:resolve
+                                                 reject:reject];
+}
+
+- (void)setSelectionDataForSchedule:(NSString *)scheduleId
+                             base64:(NSString *)base64
+                            resolve:(RCTPromiseResolveBlock)resolve
+                             reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction setSelectionDataForSchedule:scheduleId
+                                             base64:base64
+                                            resolve:resolve
+                                             reject:reject];
+}
+
+- (void)startBlockingSchedule:(NSString *)scheduleId
+                      resolve:(RCTPromiseResolveBlock)resolve
+                       reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction startBlockingSchedule:scheduleId
+                                      resolve:resolve
+                                       reject:reject];
+}
+
+- (void)getBlockingSchedules:(RCTPromiseResolveBlock)resolve
+                      reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction getBlockingSchedules:resolve reject:reject];
+}
+
+- (void)getScheduleBlockingStatus:(RCTPromiseResolveBlock)resolve
+                           reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction getScheduleBlockingStatus:resolve reject:reject];
+}
+
+- (void)loadSelectionForSchedule:(NSString *)scheduleId
+                         resolve:(RCTPromiseResolveBlock)resolve
+                          reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction loadSelectionForSchedule:scheduleId
+                                         resolve:resolve
+                                          reject:reject];
+}
+
+- (void)removeBlockingSchedule:(NSString *)scheduleId
+                       resolve:(RCTPromiseResolveBlock)resolve
+                        reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction removeBlockingSchedule:scheduleId
+                                       resolve:resolve
+                                        reject:reject];
+}
+
+// MARK: - Global Habit Blocking
+
+- (void)selectAppsForGlobalHabitBlocking {
+  [self.controlFunction selectAppsForGlobalHabitBlocking];
+}
+
+- (void)commitGlobalHabitBlockingSelection:(RCTPromiseResolveBlock)resolve
+                                    reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction commitGlobalHabitBlockingSelection:resolve
+                                                    reject:reject];
+}
+
+- (void)getGlobalHabitBlockingEnabled:(RCTResponseSenderBlock)callback {
+  [self.controlFunction getGlobalHabitBlockingEnabled:callback];
+}
+
+- (void)setGlobalHabitBlockingEnabled:(BOOL)enabled {
+  [self.controlFunction setGlobalHabitBlockingEnabled:enabled];
+}
+
+- (void)getGlobalHabitBlockingSelection:(RCTResponseSenderBlock)callback {
+  [self.controlFunction getGlobalHabitBlockingSelection:callback];
+}
+
+- (void)checkPermissionsFromReact:(RCTPromiseResolveBlock)resolve
+                           reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction
+      checkPermissionsFromReact:^(id error, NSNumber *isAuthorized) {
+        if (error) {
+          reject(@"PERMISSION_ERROR", [error description], error);
+        } else {
+          resolve(isAuthorized);
+        }
+      }];
+}
+
+- (void)getScreenTimePermission:(RCTPromiseResolveBlock)resolve
+                         reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction getScreenTimePermission:^(NSNumber *status) {
+    resolve(status);
+  }];
+}
+
+- (void)revokeScreenTimePermission:(RCTPromiseResolveBlock)resolve
+                            reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction revokeScreenTimePermission:^(NSNumber *success) {
+    resolve(success);
+  }];
+}
+
+// MARK: - App blocking functionality
+
+- (void)startBlockingDistractingApps:(double)hours minutes:(double)minutes {
+  [self.controlFunction startBlockingDistractingApps:(int)hours
+                                             minutes:(int)minutes];
+}
+
+- (void)setCurrentUseGlobalBlockList:(BOOL)useGlobalBlockList {
+  [self.controlFunction setCurrentUseGlobalBlockList:useGlobalBlockList];
+}
+
+- (void)stopBlockingDistractingApps {
+  [self.controlFunction stopBlockingDistractingApps];
+}
+
+- (void)pauseBlockingWithResume:(int)hours
+                        minutes:(int)minutes
+                         reason:(NSString *)reason {
+  [self.controlFunction pauseBlockingWithResume:hours
+                                        minutes:minutes
+                                         reason:reason];
+}
+
+- (void)pauseSchedulesIndefinitely {
+  [self.controlFunction pauseSchedulesIndefinitely];
+}
+
+- (void)resumeScheduleBlocking {
+  [self.controlFunction resumeScheduleBlocking];
+}
+
+- (void)clearBlockList {
+  [self.controlFunction clearBlockList];
+}
+
+- (void)shouldViewDisable:(RCTPromiseResolveBlock)resolve
+                   reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction shouldViewDisable:^(NSNumber *shouldDisable) {
+    resolve(shouldDisable);
+  }];
+}
+
+// MARK: - App count and management
+
+- (void)getBlockedAppsCount:(RCTPromiseResolveBlock)resolve
+                     reject:(RCTPromiseRejectBlock)reject {
+  [self.controlFunction getBlockedAppsCount:^(NSDictionary *blockListCount) {
+    resolve(blockListCount);
+  }];
+}
+
+// MARK: - Status and settings
+
+- (void)setBlockingReason:(NSString *)reason {
+  [self.controlFunction setBlockingReason:reason];
+}
+
+- (void)setBlockingStatus:(BOOL)status {
+  [self.controlFunction setBlockingStatus:status];
+}
+
+- (void)setNextActivityInfo:(NSString *)activityInfo {
+  [self.controlFunction setNextActivityInfo:activityInfo];
+}
+
+- (void)setHighFrictionMode:(BOOL)status {
+  [self.controlFunction setHighFrictionMode:status];
+}
+
+- (void)setSuperStrictMode:(BOOL)status {
+  [self.controlFunction setSuperStrictMode:status];
+}
+
+- (void)saveCustomBlockedMessage:(NSString *)message {
+  [self.controlFunction saveCustomBlockedMessage:message];
+}
+
+// MARK: - Widget data
+
+- (void)setStreakData:(int)morningStreak
+        eveningStreak:(int)eveningStreak
+          focusStreak:(int)focusStreak
+          morningDone:(BOOL)morningDone
+          eveningDone:(BOOL)eveningDone
+            focusDone:(BOOL)focusDone {
+  [self.controlFunction setStreakData:morningStreak
+                        eveningStreak:eveningStreak
+                          focusStreak:focusStreak
+                          morningDone:morningDone
+                          eveningDone:eveningDone
+                            focusDone:focusDone];
+}
+
+- (void)saveBaseDelay:(double)seconds {
+  [self.controlFunction saveBaseDelay:(int)seconds];
+}
+
+// MARK: - Widget management
+
+- (void)reloadWidget {
+  [self.controlFunction reloadWidget];
+}
+
++ (NSString *)moduleName {
+  return @"ControlFunction";
+}
+
+@end

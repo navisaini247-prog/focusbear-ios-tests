@@ -1,0 +1,82 @@
+//
+//  ControlFunctionBridge.m
+//  FocusBear
+//
+//  Created by Arindam HestaBit on 03/04/23.
+//
+
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTConvert.h>
+#import <React/RCTEventEmitter.h>
+#import <UIKit/UIKit.h>
+
+@interface RCT_EXTERN_MODULE (ControlFunction, NSObject)
+
+RCT_EXTERN_METHOD(selectApps);
+RCT_EXTERN_METHOD(selectAppsForSchedule : (NSString *)scheduleId);
+RCT_EXTERN_METHOD(storeCurrentSelection);
+RCT_EXTERN_METHOD(commitSelectionForSchedule : (NSString *)
+                      scheduleId resolve : (RCTPromiseResolveBlock)
+                          resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(assignStoredSelectionToSchedule : (NSString *)
+                      scheduleId resolve : (RCTPromiseResolveBlock)
+                          resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(setSelectionDataForSchedule : (NSString *)
+                      scheduleId base64 : (NSString *)
+                          base64 resolve : (RCTPromiseResolveBlock)
+                              resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(setBlockingSchedules : (NSString *)payload resolve : (
+    RCTPromiseResolveBlock)resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(setHabitBlockingWindows : (NSString *)payload resolve : (
+    RCTPromiseResolveBlock)resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(getBlockedAppsCount : (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(shouldViewDisable : (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(checkPermissionsFromReact : (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(getScreenTimePermission : (RCTResponseSenderBlock)callback);
+RCT_EXTERN_METHOD(revokeScreenTimePermission : (RCTResponseSenderBlock)
+                      callback);
+RCT_EXTERN_METHOD(startBlockingDistractingApps : (int)hours minutes : (int)
+                      minutes);
+RCT_EXTERN_METHOD(setCurrentUseGlobalBlockList : (BOOL)useGlobalBlockList);
+RCT_EXTERN_METHOD(stopBlockingDistractingApps);
+RCT_EXTERN_METHOD(pauseBlockingWithResume : (int)hours minutes : (int)
+                      minutes reason : (NSString *)reason);
+RCT_EXTERN_METHOD(pauseSchedulesIndefinitely);
+RCT_EXTERN_METHOD(resumeScheduleBlocking);
+RCT_EXTERN_METHOD(clearBlockList);
+RCT_EXTERN_METHOD(startBlockingSchedule : (NSString *)scheduleId resolve : (
+    RCTPromiseResolveBlock)resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(getBlockingSchedules : (RCTPromiseResolveBlock)
+                      resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(getScheduleBlockingStatus : (RCTPromiseResolveBlock)
+                      resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(loadSelectionForSchedule : (NSString *)scheduleId resolve : (
+    RCTPromiseResolveBlock)resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(clearAllBlockingSchedules : (RCTPromiseResolveBlock)
+                      resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(removeBlockingSchedule : (NSString *)scheduleId resolve : (
+    RCTPromiseResolveBlock)resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(selectAppsForGlobalHabitBlocking);
+RCT_EXTERN_METHOD(commitGlobalHabitBlockingSelection : (RCTPromiseResolveBlock)
+                      resolve reject : (RCTPromiseRejectBlock)reject);
+RCT_EXTERN_METHOD(getGlobalHabitBlockingEnabled : (RCTResponseSenderBlock)
+                      callback);
+RCT_EXTERN_METHOD(setGlobalHabitBlockingEnabled : (BOOL)enabled);
+RCT_EXTERN_METHOD(getGlobalHabitBlockingSelection : (RCTResponseSenderBlock)
+                      callback);
+RCT_EXTERN_METHOD(reloadWidget);
+RCT_EXTERN_METHOD(setBlockingReason : (NSString *)reason);
+RCT_EXTERN_METHOD(setBlockingStatus : (BOOL)status)
+RCT_EXTERN_METHOD(setNextActivityInfo : (NSString *)activityInfo);
+RCT_EXTERN_METHOD(setHighFrictionMode : (BOOL)status)
+RCT_EXTERN_METHOD(setSuperStrictMode : (BOOL)status)
+RCT_EXTERN_METHOD(saveCustomBlockedMessage : (NSString *)message);
+RCT_EXTERN_METHOD(setStreakData : (int)morningStreak eveningStreak : (
+    int)eveningStreak focusStreak : (int)focusStreak morningDone : (BOOL)
+                      morningDone eveningDone : (BOOL)
+                          eveningDone focusDone : (BOOL)focusDone);
+RCT_EXTERN_METHOD(saveUnlockDuration : (int)minutes seconds : (int)seconds);
+RCT_EXTERN_METHOD(saveBaseDelay : (int)seconds);
+
+@end

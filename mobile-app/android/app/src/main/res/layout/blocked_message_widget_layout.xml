@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/blocked_msg_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/widget_background_dark"
+    android:elevation="4dp"
+    android:gravity="center_vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/focus_bear_icon"
+        android:contentDescription="@string/widget_focus_bear_logo"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/blocked_msg_widget_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:text="@string/default_blocked_message"
+        android:textColor="@color/widget_text"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:maxLines="4"
+        android:ellipsize="end" />
+
+</LinearLayout>

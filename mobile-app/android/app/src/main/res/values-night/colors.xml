@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bootsplash_background">#000000</color>
+    <color name="alert_background">#393947</color>
+    <color name="alert_text">#ffffff</color>
+
+    <color name="alert_background_center">#4A4A4A50</color>
+    <color name="alert_background_center_border">#000000</color>
+    <color name="alert_title_text">#0D0D0D</color>
+    <color name="blocked_text">#868686</color>
+
+    <color name="floating_view_background">#000000</color>
+    <color name="floating_view_text">#ffffff</color>
+
+    <!-- Widget preview colors (dark) -->
+    <color name="widget_bg">#18181b</color>
+    <color name="widget_header_bg">#d97706</color>
+    <color name="widget_card_bg">#27272a</color>
+    <color name="widget_divider">#3F3F46</color>
+    <color name="widget_text">#FFFFFF</color>
+    <color name="widget_header_text">#FFFFFF</color>
+    <color name="widget_text_secondary">#9CA3AF</color>
+    <color name="widget_streak_active">#22C55E</color>
+    <color name="widget_streak_risk">#FACC15</color>
+    <color name="widget_streak_inactive">#6B7280</color>
+</resources>

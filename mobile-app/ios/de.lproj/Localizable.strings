@@ -1,0 +1,58 @@
+"shield_subtitle" = "Du kannst %@ nicht verwenden, da du es mit Focus Bear blockiert hast";
+"shield_title" = "Eingeschränkt durch Focus Bear";
+
+"blocked_apps" = "Blockierte Apps";
+"blocked_categories" = "Blockierte Kategorien";
+"blocked_webdomains" = "Blockierte Webdomains";
+
+"apps_to_block" = "Apps zum Blockieren: ";
+"start" = "Start";
+"pause" = "Pause";
+"resume" = "Fortsetzen";
+"next" = "Weiter";
+"skipped" = "Übersprungen";
+"finished" = "Beendet!";
+"done" = "Fertig";
+"why_do_you_want_to_skip" = "Warum möchtest du überspringen?";
+"start_routine" = "Routine starten";
+"routine_has_been_postponed_resume_routine" = "Routine wurde verschoben\n Routine fortsetzen?";
+"i_already_did_it" = "Ich habe es bereits getan";
+"cant_do_it_today" = "Kann es heute nicht machen";
+"continue_on_your_phone" = "Auf deinem Telefon fortfahren";
+"open_focusbear" = "Focus Bear öffnen";
+"tap_to_return_app" = "Tippen, um zur App zurückzukehren";
+"close" = "Schließen";
+"whats_next" = "Was kommt als nächstes:";
+"its_time_to_focus" = "Es ist Zeit, sich zu konzentrieren";
+"updated"= "Aktualisiert";
+"start_a_focus_session" = "Eine Fokussierungssitzung starten";
+
+"blockedMessage1" = "Ups, nicht jetzt";
+"blockedMessage2" = "Bist du sicher, dass du das brauchst?";
+"blockedMessage3" = "Halte deinen Fokus eingeschlossen";
+
+"motivationalMessage1" = "\"Erfolg ist die Summe kleiner Anstrengungen, wiederholt Tag für Tag.\" – Robert Collier";
+"motivationalMessage2" = "\"Das Geheimnis des Vorankommens ist, anzufangen.\" – Mark Twain";
+"motivationalMessage3" = "\"Disziplin bedeutet, zwischen dem zu wählen, was du jetzt willst, und dem, was du am meisten willst.\" – Abraham Lincoln";
+"motivationalMessage4" = "\"Deine Zukunft wird durch das geschaffen, was du heute tust, nicht morgen.\" – Robert Kiyosaki";
+"motivationalMessage5" = "\"Es scheint immer unmöglich, bis es getan ist.\" – Nelson Mandela";
+
+/* Soft blocking feature */
+"block_app" = "Blockieren Sie es";
+"unlock_for_mins_secs" = "Für %d Min %d Sek entsperren";
+"unlock_for_mins" = "Für %d Min entsperren";
+"unlock_for_secs" = "Für %d Sek entsperren";
+"waiting_to_unlock" = "Warten auf Entsperrung";
+"waiting" = "Warten...";
+"waiting_countdown" = "Warte %d Sekunden..."; 
+"unlocking_title" = "Hab Geduld mit uns...";
+"unlock_delay_message" = "Bitte warte %d Sekunden, bevor die App entsperrt wird";
+"processing_unlock" = "Entsperrung wird verarbeitet...";
+"unlock_period_ending" = "Entsperrungszeitraum endet";
+"blocking_will_resume" = "App-Blockierung wird bald wieder aufgenommen";
+
+"exponential_delay_note" = "Jedes Entsperren verdoppelt die Wartezeit. Bleib fokussiert – diese Pause soll dir helfen. Du kannst die Basis-Wartezeit und die Entsperrdauer in den Blockierplan-Einstellungen anpassen!";
+
+/* Blocking schedule shield reason */
+"blocking_enabled_by_schedule" = "Dein Blockierplan %@ ist aktiv";
+"blocked_globally" = "Diese App wird global blockiert";
