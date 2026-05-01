@@ -25,6 +25,7 @@ jobs:
       - name: Verify stable test files exist
         run: |
           test -f ./test/specs/auth/login.e2e.js
+          test -f ./test/specs/auth/login.invalid.e2e.js
           test -f ./test/specs/dashboard/dashboard.stable.e2e.js
           test -f ./test/specs/dashboard/habits/dashboard.start-activity.e2e.js
 
@@ -32,5 +33,6 @@ jobs:
         run: |
           echo "Stable E2E tests prepared:"
           echo "1. Login success test"
-          echo "2. Dashboard smoke test"
-          echo "3. Morning routine activity test"
+          echo "2. Invalid login validation test"
+          echo "3. Dashboard smoke test"
+          echo "4. Morning routine activity test"
