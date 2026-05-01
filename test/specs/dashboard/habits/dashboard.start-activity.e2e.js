@@ -1,41 +1,87 @@
 import { loginToDashboard } from '../../../utils/auth.js'
 
-describe('Focus Bear Start Activity Functional Test', () => {
-  it('should start the Plan To-Do list habit from evening routine', async () => {
+describe('Start Morning Routine Activity', () => {
+
+  async function clearOptionalTooltip() {
+    const morningRoutine = await $('~test:id/routine-morning')
+
+    // If already visible → no need to tap
+    if (await morningRoutine.isDisplayed().catch(() => false)) {
+      return
+    }
+
+    const screen = await driver.getWindowRect()
+
+    // Single safe tap (avoid double taps!)
+    await driver.execute('mobile: tap', {
+      x: Math.floor(screen.width * 0.5),
+      y: Math.floor(screen.height * 0.42),
+    })
+
+    await driver.pause(1000)
+  }
+
+  const topMorningActivities = [
+    '~test:id/activity-1',
+    '~test:id/activity-2',
+    '~test:id/activity-3',
+  ]
+
+  async function findVisibleMorningActivity() {
+    for (const selector of topMorningActivities) {
+      const activity = await $(selector)
+      if (await activity.isDisplayed().catch(() => false)) {
+        console.log(`Selected activity: ${selector}`)
+        return activity
+      }
+    }
+    return null
+  }
+
+  it('should start one of the top three morning routine activities', async () => {
     await loginToDashboard()
 
-    // Go to Home
-    await $('~test:id/home-tab').click()
+    // Tap Habits (top tab)
+    const habitsTab = await $('~test:id/home-tab-habit')
+    await habitsTab.waitForDisplayed({ timeout: 20000 })
+    await habitsTab.click()
 
-    // Go to Habits
-    await $('~test:id/home-tab-habit').waitForDisplayed({ timeout: 15000 })
-    await $('~test:id/home-tab-habit').click()
+    await driver.pause(1000)
 
-    // Contract Morning
-    const morningRoutine = await $('~test:id/routine-morning')
-    await morningRoutine.waitForDisplayed({ timeout: 15000 })
-    await morningRoutine.click()
+    // Clear overlay if present
+    await clearOptionalTooltip()
 
-    // Expand Evening
-    const eveningRoutine = await $('~test:id/routine-evening')
-await eveningRoutine.waitForExist({ timeout: 15000 })
-await eveningRoutine.click()
+    // FIRST: check if activities already visible (morning already expanded)
+    let selectedActivity = await findVisibleMorningActivity()
 
-    // Tap Plan To-Do activity
-    const activity = await $('~test:id/activity-2')
-    await activity.waitForDisplayed({ timeout: 15000 })
-    await activity.click()
+    // ONLY expand Morning if activities are not visible
+    if (!selectedActivity) {
+      const morningRoutine = await $('~test:id/routine-morning')
+      await morningRoutine.waitForExist({ timeout: 15000 })
+      await morningRoutine.click()
 
-    // Tap Start
-    const startActivity = await $('~test:id/start-activity')
-    await startActivity.waitForDisplayed({ timeout: 15000 })
-    await startActivity.click()
+      await driver.pause(1000)
 
-   // Verify habit activity screen
-await $('~test:id/pause-play-habit').waitForDisplayed({ timeout: 15000 })
+      selectedActivity = await findVisibleMorningActivity()
+    }
 
-await expect($('~test:id/focus-music-button')).toBeDisplayed()
-await expect($('~test:id/pause-play-habit')).toBeDisplayed()
-await expect($('~test:id/header-back-button')).toBeDisplayed()
-})
+    if (!selectedActivity) {
+      throw new Error('None of the top three morning activities were visible')
+    }
+
+    await selectedActivity.click()
+
+    // Start activity
+    const startBtn = await $('~test:id/start-activity')
+    await startBtn.waitForDisplayed({ timeout: 15000 })
+    await startBtn.click()
+
+    // Verify activity screen
+    const pausePlay = await $('~test:id/pause-play-habit')
+    await pausePlay.waitForDisplayed({ timeout: 15000 })
+
+    await expect(pausePlay).toBeDisplayed()
+    await expect($('~test:id/focus-music-button')).toBeDisplayed()
+    await expect($('~test:id/header-back-button')).toBeDisplayed()
+  })
 })

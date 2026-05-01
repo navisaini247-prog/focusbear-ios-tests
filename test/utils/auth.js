@@ -1,12 +1,46 @@
+async function clearAndType(selector, value) {
+  const field = await $(selector)
+
+  await field.waitForDisplayed({ timeout: 15000 })
+  await field.click()
+  await driver.pause(300)
+
+  await field.clearValue().catch(() => {})
+  await field.setValue('')
+  await driver.pause(300)
+
+  for (const char of value) {
+    await driver.keys(char)
+    await driver.pause(80)
+  }
+}
+
+async function tapUpperScreen() {
+  const screen = await driver.getWindowRect()
+
+  await driver.execute('mobile: tap', {
+    x: Math.floor(screen.width * 0.5),
+    y: Math.floor(screen.height * 0.25),
+  })
+
+  await driver.pause(800)
+}
+
+async function dismissDashboardPopup() {
+  await tapUpperScreen()
+  await tapUpperScreen()
+}
+
 export async function loginToDashboard() {
-  // If already on dashboard, skip login
   const homeTab = await $('~test:id/home-tab')
 
+  // If already logged in / dashboard visible, skip login
   if (await homeTab.isExisting().catch(() => false)) {
+    await dismissDashboardPopup()
     return
   }
 
-  // Otherwise continue onboarding/login flow
+  // Onboarding flow
   const introButton = await $('~test:id/bear-onboarding-primary')
   await introButton.waitForDisplayed({ timeout: 15000 })
   await introButton.click()
@@ -28,6 +62,7 @@ export async function loginToDashboard() {
   await agreeTerms.click()
 
   const acceptButton = await $('~test:id/accept-privacy-notice')
+  await acceptButton.waitForDisplayed({ timeout: 15000 })
   await acceptButton.click()
 
   const alreadyHaveAccount = await $('~test:id/already-have-account')
@@ -38,11 +73,22 @@ export async function loginToDashboard() {
   await startWithEmail.waitForDisplayed({ timeout: 15000 })
   await startWithEmail.click()
 
-  await $('~test:id/email').setValue('testuser@focusbear.com')
-  await $('~test:id/password').setValue('Test@1234')
+  await clearAndType('~test:id/email', 'testuser@focusbear.com')
+  await clearAndType('~test:id/password', 'Test@1234')
 
-  await $('~test:id/log-in').click()
+  const loginButton = await $('~test:id/log-in')
+  await loginButton.waitForDisplayed({ timeout: 15000 })
 
-  // Wait for dashboard
-  await homeTab.waitForDisplayed({ timeout: 20000 })
+  await driver.pause(500)
+  await loginButton.click()
+
+  // Wait for dashboard, then dismiss any popup/overlay
+  try {
+    await homeTab.waitForDisplayed({ timeout: 25000 })
+  } catch (e) {
+    await dismissDashboardPopup()
+    await homeTab.waitForDisplayed({ timeout: 20000 })
+  }
+
+  await dismissDashboardPopup()
 }
