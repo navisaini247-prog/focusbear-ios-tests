@@ -6,35 +6,63 @@ on:
   pull_request:
     branches: [ main ]
 
+  # Manual full-suite trigger
+  workflow_dispatch:
+
 jobs:
-  e2e-check:
+  smoke-check:
+    name: Smoke E2E Check
     runs-on: macos-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Verify smoke test files exist
+        run: |
+          test -f ./test/specs/auth/login.e2e.js
+          test -f ./test/specs/dashboard/dashboard.stable.e2e.js
+          test -f ./test/specs/dashboard/habits/dashboard.start-activity.e2e.js
 
-      - name: Install dependencies
-        run: npm install
+      - name: List smoke tests
+        run: |
+          echo "Smoke tests:"
+          echo "1. Login success"
+          echo "2. Dashboard smoke"
+          echo "3. Morning routine activity"
 
-      - name: Verify stable test files exist
+  full-suite-check:
+    name: Full E2E Suite Check
+    runs-on: macos-latest
+
+    # Full suite runs only when manually triggered
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Verify full test suite files exist
         run: |
           test -f ./test/specs/auth/login.e2e.js
           test -f ./test/specs/auth/login.invalid.e2e.js
+          test -f ./test/specs/auth/login.empty.e2e.js
+          test -f ./test/specs/auth/forgot.password.e2e.js
+          test -f ./test/specs/auth/password.toggle.e2e.js
+          test -f ./test/specs/auth/signup.validation.e2e.js
           test -f ./test/specs/dashboard/dashboard.stable.e2e.js
           test -f ./test/specs/dashboard/habits/dashboard.start-activity.e2e.js
           test -f ./test/specs/dashboard/focus/focus.session.e2e.js
 
-      - name: List stable E2E tests
+      - name: List full suite tests
         run: |
-          echo "Stable E2E tests prepared:"
-          echo "1. Login success test"
-          echo "2. Invalid login validation test"
-          echo "3. Dashboard smoke test"
-          echo "4. Morning routine activity test"
-          echo "5. Focus session start/end test"
+          echo "Full E2E suite:"
+          echo "1. Login success"
+          echo "2. Invalid login"
+          echo "3. Empty login"
+          echo "4. Forgot password"
+          echo "5. Password visibility toggle"
+          echo "6. Signup validation"
+          echo "7. Dashboard smoke"
+          echo "8. Morning routine activity"
+          echo "9. Focus session"
