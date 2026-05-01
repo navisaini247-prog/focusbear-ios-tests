@@ -28,6 +28,7 @@ jobs:
           test -f ./test/specs/auth/login.invalid.e2e.js
           test -f ./test/specs/dashboard/dashboard.stable.e2e.js
           test -f ./test/specs/dashboard/habits/dashboard.start-activity.e2e.js
+          test -f ./test/specs/dashboard/focus/focus.session.e2e.js
 
       - name: List stable E2E tests
         run: |
@@ -36,3 +37,4 @@ jobs:
           echo "2. Invalid login validation test"
           echo "3. Dashboard smoke test"
           echo "4. Morning routine activity test"
+          echo "5. Focus session start/end test"
