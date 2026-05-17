@@ -21,9 +21,7 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: [
-        // ToDo: define location for spec files here
-    ],
+    specs: ['./test/specs/**/*.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -44,7 +42,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -139,6 +137,11 @@ export const config = {
     disableWebdriverScreenshotsReporting: false,
   }],
 ],
+afterTest: async function (test, context, { error }) {
+  if (error) {
+    await driver.takeScreenshot();
+  }
+},
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

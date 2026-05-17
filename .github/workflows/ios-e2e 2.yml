@@ -1,0 +1,38 @@
+name: iOS E2E Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ios-e2e:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Appium driver
+        run: npx appium driver install xcuitest
+
+      - name: Show available simulators
+        run: xcrun simctl list devices available
+
+      - name: Boot iOS Simulator
+        run: |
+          xcrun simctl boot "iPhone 15" || true
+          open -a Simulator
+          xcrun simctl bootstatus booted
+
+      - name: Run WDIO tests
+        run: npx wdio run ./wdio.conf.js

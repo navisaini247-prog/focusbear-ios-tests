@@ -88,7 +88,7 @@
 		893184457F694319B8D4DF45 /* Fenwick-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E61D2A5828AF4F8F83EFB810 /* Fenwick-Italic.ttf */; };
 		A2E73D8627CA4972BA2343D3 /* Fenwick-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC404ACD14D046D3BF4970BA /* Fenwick-Bold.ttf */; };
 		A75FE0A62F994B878B0555AB /* Fenwick-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D168D314B163482C8D6CE7CF /* Fenwick-Light.ttf */; };
-		AD6377800472BDFA99F2DBFC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		AD6377800472BDFA99F2DBFC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		ADEE67A62E97C04A0054F984 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEE67A52E97C04A0054F984 /* DeviceActivity.framework */; };
 		ADEE67AE2E97C04A0054F984 /* DeviceActivityMonitorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADEE67A42E97C04A0054F984 /* DeviceActivityMonitorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADEE67B32E97C0B40054F984 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733E7CF29DAB55300DF4A42 /* ActivityController.swift */; };
@@ -412,7 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FFAA00E1A1000800000001 /* EventKit.framework in Frameworks */,
-				AD6377800472BDFA99F2DBFC /* (null) in Frameworks */,
+				AD6377800472BDFA99F2DBFC /* BuildFile in Frameworks */,
 				6AECB8DBC088839EEBF03BBF /* libPods-FocusBear-Staging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1096,13 +1096,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Development/Pods-FocusBear-Development-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Development/Pods-FocusBear-Development-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1117,13 +1113,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Staging/Pods-FocusBear-Staging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Staging/Pods-FocusBear-Staging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1138,13 +1130,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Production/Pods-FocusBear-Production-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Production/Pods-FocusBear-Production-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1181,13 +1169,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Staging/Pods-FocusBear-Staging-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Staging/Pods-FocusBear-Staging-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1290,13 +1274,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Production/Pods-FocusBear-Production-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Production/Pods-FocusBear-Production-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1333,13 +1313,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Development/Pods-FocusBear-Development-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FocusBear-Development/Pods-FocusBear-Development-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2038,7 +2014,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -2109,7 +2088,10 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

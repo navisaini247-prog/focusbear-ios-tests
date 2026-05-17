@@ -10805,6 +10805,11 @@ react-native-country-picker-modal@^2.0.0:
     prop-types "15.7.2"
     react-async-hook "3.6.1"
 
+react-native-date-picker@^5.0.13:
+  version "5.0.13"
+  resolved "https://registry.npmjs.org/react-native-date-picker/-/react-native-date-picker-5.0.13.tgz"
+  integrity sha512-qCLUODZVsJetO5zuoXjw1D39K527XWqBG8sOfhWdHyPzf13h8RXR1/RSKd1N0fdRDi5GdyizYmB0lPAK12/hbw==
+
 react-native-device-info@^10.8.0:
   version "10.14.0"
   resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.14.0.tgz"
