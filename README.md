@@ -80,3 +80,15 @@ The goal was to simulate real user behavior and build **stable, reliable test au
 ```bash
 npm install
 npx wdio run ./wdio.conf.js
+
+## Latest Weekly Update
+
+This update adds expanded iOS E2E automation coverage for Focus Bear, including:
+
+- Tasks screen automation
+- Task notes and options modal testing
+- Focus session with music playback
+- Focus notes creation and saving
+- App stability smoke navigation test
+- Improved waits and iOS selector handling
+- CI/CD workflow preparation
